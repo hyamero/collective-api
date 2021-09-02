@@ -7,9 +7,12 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.4.1",
     "axios": "^0.21.1",
+    "css-maid": "^2.0.1",
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "react-router-dom": "^5.2.1"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",
