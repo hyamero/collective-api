@@ -14,15 +14,18 @@ import { SearchResult } from "./components/SearchResult";
 import { ApiCard } from "./components/ApiCard";
 
 function App() {
+  const [data, setData] = useState<any>();
+  const [categories, setCategories] = useState<string | undefined>();
+  const [showContent, setShowContent] = useState<boolean>(false);
+
   useEffect(() => {
     getAllEntries();
+    getCategories();
     setTimeout(() => {
       setShowContent(true);
     }, 3000);
   }, []);
 
-  const [data, setData] = useState<any>();
-  const [showContent, setShowContent] = useState<boolean>(false);
   const getAllEntries = async () => {
     try {
       const url = "https://api.publicapis.org/entries";
@@ -34,15 +37,27 @@ function App() {
     }
   };
 
+  const getCategories = async () => {
+    const url = "https://api.publicapis.org/categories";
+    try {
+      const res = await axios.get(url);
+      setCategories(res.data);
+      console.log(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div
       className="App"
       css={css`
-        height: 100vh;
+        height: 100%;
       `}
     >
       <Navbar />
       <ApiCard data={data} showContent={showContent} />
+      <LandingPage categories={categories} />
       <Global
         styles={css`
           * {

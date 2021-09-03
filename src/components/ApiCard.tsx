@@ -17,6 +17,7 @@ export const ApiCard: React.FC<ApiCardProps> = ({ data, showContent }) => {
         width: 100vw;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        justify-items: center;
         gap: 2rem;
         margin: auto;
 
@@ -27,13 +28,11 @@ export const ApiCard: React.FC<ApiCardProps> = ({ data, showContent }) => {
     >
       {/* All entries */}
       {showContent &&
-        data.map((api: any) => {
-          return (
-            <div className="api-card" key={api.Link}>
-              <ApiDetails api={api} />
-            </div>
-          );
-        })}
+        data.map((api: any) => (
+          <div className="api-card" key={api.Link}>
+            <ApiDetails api={api} />
+          </div>
+        ))}
     </div>
   );
 };

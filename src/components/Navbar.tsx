@@ -17,10 +17,12 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
 
         h1 {
           font-size: 2rem;
+          margin: 0;
         }
 
         .link-github {
           font-size: 1.3rem;
+          margin: 0;
         }
       `}
     >
@@ -28,6 +30,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
       <a
         className="link-github"
         href="https://github.com/hyamero/collective-api"
+        target="_blank"
       >
         github
       </a>
