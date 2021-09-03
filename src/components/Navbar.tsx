@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface NavbarProps {}
 
@@ -15,7 +16,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
         align-items: center;
         margin-bottom: 25px;
 
-        h1 {
+        .logo {
           font-size: 2rem;
           margin: 0;
         }
@@ -26,14 +27,18 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
         }
       `}
     >
-      <h1>Collective APIs</h1>
-      <a
-        className="link-github"
-        href="https://github.com/hyamero/collective-api"
-        target="_blank"
-      >
-        github
-      </a>
+      <Link to="/" className="logo">
+        <h1>Collective APIs</h1>
+      </Link>
+      <div className="link-github">
+        <a
+          className="link-github"
+          href="https://github.com/hyamero/collective-api"
+          target="_blank"
+        >
+          github
+        </a>
+      </div>
     </nav>
   );
 };

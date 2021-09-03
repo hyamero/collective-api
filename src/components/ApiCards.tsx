@@ -8,7 +8,7 @@ interface ApiCardProps {
   showContent: boolean;
 }
 
-export const ApiCard: React.FC<ApiCardProps> = ({ data, showContent }) => {
+export const ApiCards: React.FC<ApiCardProps> = ({ data, showContent }) => {
   return (
     <div
       className="ApiCard container"

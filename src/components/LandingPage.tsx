@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 interface LandingPageProps {
   categories: any;
@@ -12,7 +13,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({ categories }) => {
         <span>{category}</span>
       ))}
       <div className="header-btns">
-        <h3>list all APIs instead</h3>
+        <Link to="/category/:name">
+          <h3>show all APIs instead</h3>
+        </Link>
         <h3>random api</h3>
       </div>
     </header>
