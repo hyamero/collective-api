@@ -13,6 +13,8 @@ import { AllEntries } from "./components/AllEntries";
 import { SearchResult } from "./components/SearchResult";
 import { ApiCards } from "./components/ApiCards";
 
+import background from "./img/Background.jpg";
+
 function App() {
   const [data, setData] = useState<any>();
   const [categories, setCategories] = useState<string | undefined>();
@@ -66,7 +68,9 @@ function App() {
       <div
         className="App"
         css={css`
-          height: 100%;
+          height: 100vh;
+          background: url(${background});
+          background-size: cover;
         `}
       >
         <Navbar />
