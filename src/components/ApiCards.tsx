@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
 import React from "react";
-import { ApiDetails } from "./ApiDetails";
+import { ApiCardItem } from "./ApiCardItem";
 
 interface ApiCardProps {
   data: any;
@@ -30,7 +30,7 @@ export const ApiCards: React.FC<ApiCardProps> = ({ data, showContent }) => {
       {showContent &&
         data.map((api: any) => (
           <div className="api-card" key={api.Link}>
-            <ApiDetails api={api} />
+            <ApiCardItem api={api} />
           </div>
         ))}
     </div>

@@ -6,7 +6,7 @@ interface ApiCardProps {
   api: any;
 }
 
-export const ApiDetails: React.FC<ApiCardProps> = ({ api }) => {
+export const ApiCardItem: React.FC<ApiCardProps> = ({ api }) => {
   return (
     <ul css={css``}>
       <li>{api.API}</li>
