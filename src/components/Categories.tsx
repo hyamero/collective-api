@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 import { FiSearch } from "react-icons/fi";
 
@@ -16,6 +17,68 @@ export const Categories: React.FC<CategoriesProps> = ({ categories }) => {
         width: 80%;
         max-width: 1280px;
 
+        .categories-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 15px;
+
+          .category-main-text {
+            margin: 0 40px;
+
+            h3 {
+              font-size: 1.8rem;
+              color: #280d4a;
+            }
+
+            .all-link {
+              font-size: 1rem;
+              color: #8e4ae3;
+              position: relative;
+              bottom: 10px;
+              border-bottom: 1px #8e4ae3 solid;
+            }
+          }
+
+          .searchbar {
+            margin: 0 40px;
+            position: relative;
+
+            input {
+              height: 2.2rem;
+              width: 300px;
+              border-top-right-radius: 10px;
+              border-bottom-right-radius: 10px;
+              /* border-radius: 15px; */
+              border: none;
+              font-size: 0.9rem;
+              padding: 0 10px;
+              position: relative;
+              z-index: 2;
+            }
+
+            .icon-search-container {
+              background: #fff;
+              position: absolute;
+              left: -1.8rem;
+              bottom: 0;
+              height: 2.2rem;
+              width: 30px;
+              border-top-left-radius: 10px;
+              border-bottom-left-radius: 10px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding-left: 10px;
+
+              .icon-search {
+                font-size: 1.3rem;
+                color: #757575;
+              }
+            }
+          }
+        }
+
         .categories-container p {
           text-align: center;
           font-size: 0.8rem;
@@ -30,6 +93,20 @@ export const Categories: React.FC<CategoriesProps> = ({ categories }) => {
         }
       `}
     >
+      <div className="categories-header">
+        <div className="category-main-text">
+          <h3>Select a Category</h3>
+          <Link to="/results" className="all-link">
+            List all categories instead
+          </Link>
+        </div>
+        <div className="searchbar">
+          <input type="text" placeholder="Search a Category" />
+          <div className="icon-search-container">
+            <FiSearch className="icon-search" />
+          </div>
+        </div>
+      </div>
       <div
         className="categories-container"
         css={css`
