@@ -72,6 +72,7 @@ function App() {
           background: url(${background});
           background-size: cover;
           overflow-x: hidden;
+          z-index: 1;
         `}
       >
         <Navbar />

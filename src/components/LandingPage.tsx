@@ -24,6 +24,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ categories }) => {
         overflow: hidden;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
+        z-index: 2;
 
         .doodle {
           position: absolute;

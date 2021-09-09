@@ -16,6 +16,8 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
         align-items: center;
         margin-bottom: 25px;
         padding-top: 25px;
+        position: relative;
+        z-index: 3;
 
         .btn-nav {
           padding: 0 60px;
@@ -27,7 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
         .logo {
           font-size: 1.2rem;
           font-weight: 700;
-          color: #000;
+          color: #280d4a;
           margin: 0;
         }
 
@@ -38,11 +40,12 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
           background: #fff;
           border-radius: 15px;
           padding: 10px 30px;
+          box-shadow: 1px 1px 2px #fff;
         }
       `}
     >
       <Link to="/" className="logo">
-        <h1>Collective APIs</h1>
+        <h1>💡 Collective APIs</h1>
       </Link>
       <div className="btns-navbar">
         <Link className="btn-nav" to="/">
