@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { FiSearch } from "react-icons/fi";
@@ -10,6 +10,8 @@ interface CategoriesProps {
 }
 
 export const Categories: React.FC<CategoriesProps> = ({ categories }) => {
+  const [categoryData, setCategoryData] = useState<string>();
+
   return (
     <div
       className="Categories"
@@ -117,7 +119,18 @@ export const Categories: React.FC<CategoriesProps> = ({ categories }) => {
         `}
       >
         {categories !== undefined &&
-          categories.map((category: string | undefined) => <p>{category}</p>)}
+          categories.map((category: string | undefined) => (
+            <p
+              key={category}
+              onClick={(e) => {
+                e.preventDefault;
+                setCategoryData(category);
+                console.log(categoryData);
+              }}
+            >
+              {category}
+            </p>
+          ))}
       </div>
     </div>
   );
