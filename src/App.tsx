@@ -12,6 +12,7 @@ import { CategoryResult } from "./components/CategoryResult";
 import { AllEntries } from "./components/AllEntries";
 import { SearchResult } from "./components/SearchResult";
 import { ApiCards } from "./components/ApiCards";
+import { Categories } from "./components/Categories";
 
 import background from "./img/Background.jpg";
 
@@ -78,12 +79,14 @@ function App() {
         <Navbar />
         <Switch>
           {showContent && (
-            <Route
-              path="/"
-              exact
-              render={() => <LandingPage categories={categories} />}
-            />
+            <Route path="/" exact render={() => <LandingPage />} />
           )}
+
+          <Route
+            path="/categories"
+            exact
+            render={() => <Categories categories={categories} />}
+          />
 
           <Route
             path="/category/:name"

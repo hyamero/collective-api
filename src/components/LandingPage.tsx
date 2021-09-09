@@ -7,11 +7,9 @@ import renderPerson from "../img/Saly-19.png";
 import doodle from "../img/doodle-5.png";
 import doodle1 from "../img/doodle-4.png";
 
-interface LandingPageProps {
-  categories: any;
-}
+interface LandingPageProps {}
 
-export const LandingPage: React.FC<LandingPageProps> = ({ categories }) => {
+export const LandingPage: React.FC<LandingPageProps> = ({}) => {
   return (
     <header
       className="LandingPage"
