@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import { FiSearch } from "react-icons/fi";
 
@@ -10,7 +11,23 @@ interface CategoriesProps {
 }
 
 export const Categories: React.FC<CategoriesProps> = ({ categories }) => {
-  const [categoryData, setCategoryData] = useState<string>();
+  const [categoryName, setCategoryName] = useState<string>();
+  const [categoryData, setCategoryData] = useState<string | undefined>();
+
+  useEffect(() => {
+    getCategoryData();
+  }, [categoryName]);
+
+  const getCategoryData = async () => {
+    const url = "https://api.publicapis.org/entries?category=";
+    try {
+      const res = await axios.get(`${url}${categoryName}`);
+      setCategoryData(res.data);
+      console.log(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div
@@ -124,8 +141,8 @@ export const Categories: React.FC<CategoriesProps> = ({ categories }) => {
               key={category}
               onClick={(e) => {
                 e.preventDefault;
-                setCategoryData(category);
-                console.log(categoryData);
+                setCategoryName(category);
+                console.log(categoryName);
               }}
             >
               {category}
