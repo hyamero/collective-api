@@ -19,8 +19,7 @@ import background from "./img/Background.jpg";
 function App() {
   const [data, setData] = useState<any>();
   const [categories, setCategories] = useState<string | undefined>();
-  const [category, setCategory] = useState<string>();
-  const [categoryResult, setCategoryResult] = useState<any>();
+  // const [categoryResult, setCategoryResult] = useState<any>();
   const [showContent, setShowContent] = useState<boolean>(false);
 
   useEffect(() => {
@@ -53,12 +52,31 @@ function App() {
     }
   };
 
-  const getCategoryResult = async (category: string) => {
-    const link = "https://api.publicapis.org/entries?category=";
+  // const getCategoryResult = async (category: string) => {
+  //   const link = "https://api.publicapis.org/entries?category=";
+  //   try {
+  //     const res = await axios.get(`${link}${category}`);
+  //     setCategoryResult(res.data.entries);
+  //     console.log(res.data.entries);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
+
+  //Call on Category Name
+  const [categoryName, setCategoryName] = useState<string>();
+  const [categoryData, setCategoryData] = useState<string | undefined>();
+
+  useEffect(() => {
+    getCategoryData();
+  }, [categoryName]);
+
+  const getCategoryData = async () => {
+    const url = "https://api.publicapis.org/entries?category=";
     try {
-      const res = await axios.get(`${link}${category}`);
-      setCategoryResult(res.data.entries);
-      console.log(res.data.entries);
+      const res = await axios.get(`${url}${categoryName}`);
+      setCategoryData(res.data);
+      console.log(res.data);
     } catch (err) {
       console.error(err);
     }
@@ -83,15 +101,26 @@ function App() {
           )}
 
           <Route
-            path="/categories"
+            path="/category"
             exact
-            render={() => <Categories categories={categories} />}
+            render={() => (
+              <Categories
+                categories={categories}
+                setCategoryName={setCategoryName}
+              />
+            )}
           />
 
           <Route
-            path="/category/:name"
-            render={() => <ApiCards data={data} showContent={showContent} />}
+            path="category/:name"
+            exact
+            render={() => <CategoryResult />}
           />
+
+          {/* <Route
+            path="/category/all"
+            render={() => <ApiCards data={data} showContent={showContent} />}
+          /> */}
         </Switch>
         <Global
           styles={css`

@@ -84,7 +84,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({}) => {
           Free APIs for <br />
           Everyone
         </h1>
-        <Link className="btn-main" to="/categories">
+        <Link className="btn-main" to="/category">
           Get Started
         </Link>
       </div>

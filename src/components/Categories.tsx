@@ -8,27 +8,13 @@ import { FiSearch } from "react-icons/fi";
 
 interface CategoriesProps {
   categories: any;
+  setCategoryName: React.Dispatch<React.SetStateAction<string | undefined>>;
 }
 
-export const Categories: React.FC<CategoriesProps> = ({ categories }) => {
-  const [categoryName, setCategoryName] = useState<string>();
-  const [categoryData, setCategoryData] = useState<string | undefined>();
-
-  useEffect(() => {
-    getCategoryData();
-  }, [categoryName]);
-
-  const getCategoryData = async () => {
-    const url = "https://api.publicapis.org/entries?category=";
-    try {
-      const res = await axios.get(`${url}${categoryName}`);
-      setCategoryData(res.data);
-      console.log(res.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
+export const Categories: React.FC<CategoriesProps> = ({
+  categories,
+  setCategoryName,
+}) => {
   return (
     <div
       className="Categories"
@@ -137,16 +123,17 @@ export const Categories: React.FC<CategoriesProps> = ({ categories }) => {
       >
         {categories !== undefined &&
           categories.map((category: string | undefined) => (
-            <p
-              key={category}
-              onClick={(e) => {
-                e.preventDefault;
-                setCategoryName(category);
-                console.log(categoryName);
-              }}
-            >
-              {category}
-            </p>
+            <Link to={`/category/${category}`}>
+              <p
+                key={category}
+                onClick={(e) => {
+                  e.preventDefault;
+                  setCategoryName(category);
+                }}
+              >
+                {category}
+              </p>
+            </Link>
           ))}
       </div>
     </div>
