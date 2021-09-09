@@ -71,6 +71,7 @@ function App() {
           height: 100vh;
           background: url(${background});
           background-size: cover;
+          overflow-x: hidden;
         `}
       >
         <Navbar />
@@ -105,7 +106,7 @@ function App() {
             }
 
             .container {
-              width: 80%;
+              width: 69%;
               max-width: 1280px;
               margin: auto;
             }
