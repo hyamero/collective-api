@@ -9,6 +9,7 @@ import "css-maid";
 import { Navbar } from "./components/Navbar";
 import { LandingPage } from "./components/LandingPage";
 import { Categories } from "./components/Categories";
+import { CategoryResult } from "./components/CategoryResult";
 
 import background from "./img/Background.jpg";
 
@@ -37,7 +38,7 @@ function App() {
     try {
       const res = await axios.get(url);
       setCategories(res.data);
-      console.table(res.data);
+      console.log(res.data);
     } catch (err) {
       console.error(err);
     }
@@ -89,10 +90,10 @@ function App() {
             )}
           />
 
-          {/* <Route
-            path="category/:name"
+          <Route
+            path="/category/:name"
             render={() => <CategoryResult categoryData={categoryData} />}
-          /> */}
+          />
         </Switch>
         <Global
           styles={css`

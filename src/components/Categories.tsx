@@ -21,6 +21,7 @@ export const Categories: React.FC<CategoriesProps> = ({
       css={css`
         width: 80%;
         max-width: 1280px;
+        margin: auto;
 
         .categories-header {
           display: flex;
@@ -121,7 +122,7 @@ export const Categories: React.FC<CategoriesProps> = ({
           background: #e0e0e0;
         `}
       >
-        {categories !== undefined &&
+        {typeof categories !== "undefined" &&
           categories.map((category: string | undefined) => (
             <Link to={`/category/${category}`} key={category}>
               <p
