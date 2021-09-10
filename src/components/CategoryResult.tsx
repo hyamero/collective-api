@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
-import React from "react";
+import React, { useEffect } from "react";
+import { AllEntries } from "./AllEntries";
 import { CategoryEntry } from "./CategoryEntry";
 
 interface CategoryResultProps {
@@ -20,12 +21,15 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
         background-image: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%);
       `}
     >
-      {categoryData !== null &&
+      {categoryData !== null && categoryData !== undefined ? (
         categoryData.map((entry: any) => (
-          <div key={entry.API}>
+          <div key={entry.Link}>
             <CategoryEntry entry={entry} />
           </div>
-        ))}
+        ))
+      ) : (
+        <AllEntries />
+      )}
     </div>
   );
 };

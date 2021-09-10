@@ -52,6 +52,10 @@ function App() {
     getCategoryData();
   }, [categoryName]);
 
+  useEffect(() => {
+    getCategoryData();
+  }, []);
+
   const getCategoryData = async () => {
     const url = "https://api.publicapis.org/entries?category=";
     try {
