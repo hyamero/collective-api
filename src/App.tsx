@@ -8,33 +8,24 @@ import "css-maid";
 //components
 import { Navbar } from "./components/Navbar";
 import { LandingPage } from "./components/LandingPage";
-import { CategoryResult } from "./components/CategoryResult";
-import { AllEntries } from "./components/AllEntries";
-import { SearchResult } from "./components/SearchResult";
-import { ApiCards } from "./components/ApiCards";
 import { Categories } from "./components/Categories";
 
 import background from "./img/Background.jpg";
 
 function App() {
-  const [data, setData] = useState<any>();
+  const [allEntries, setAllEntries] = useState<any>();
   const [categories, setCategories] = useState<string | undefined>();
-  // const [categoryResult, setCategoryResult] = useState<any>();
-  const [showContent, setShowContent] = useState<boolean>(false);
 
   useEffect(() => {
     getAllEntries();
     getCategories();
-    setTimeout(() => {
-      setShowContent(true);
-    }, 3000);
   }, []);
 
   const getAllEntries = async () => {
     try {
       const url = "https://api.publicapis.org/entries";
       const res = await axios.get(url);
-      setData(res.data.entries);
+      setAllEntries(res.data.entries);
       console.log(res.data.entries);
     } catch (err) {
       console.error(err);
@@ -46,26 +37,15 @@ function App() {
     try {
       const res = await axios.get(url);
       setCategories(res.data);
-      console.log(res.data);
+      console.table(res.data);
     } catch (err) {
       console.error(err);
     }
   };
 
-  // const getCategoryResult = async (category: string) => {
-  //   const link = "https://api.publicapis.org/entries?category=";
-  //   try {
-  //     const res = await axios.get(`${link}${category}`);
-  //     setCategoryResult(res.data.entries);
-  //     console.log(res.data.entries);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
-  //Call on Category Name
+  //Call by Category Name
   const [categoryName, setCategoryName] = useState<string>();
-  const [categoryData, setCategoryData] = useState<string | undefined>();
+  const [categoryData, setCategoryData] = useState<any>();
 
   useEffect(() => {
     getCategoryData();
@@ -75,8 +55,8 @@ function App() {
     const url = "https://api.publicapis.org/entries?category=";
     try {
       const res = await axios.get(`${url}${categoryName}`);
-      setCategoryData(res.data);
-      console.log(res.data);
+      setCategoryData(res.data.entries);
+      console.table(res.data.entries);
     } catch (err) {
       console.error(err);
     }
@@ -96,9 +76,7 @@ function App() {
       >
         <Navbar />
         <Switch>
-          {showContent && (
-            <Route path="/" exact render={() => <LandingPage />} />
-          )}
+          <Route path="/" exact render={() => <LandingPage />} />
 
           <Route
             path="/category"
@@ -111,15 +89,9 @@ function App() {
             )}
           />
 
-          <Route
-            path="category/:name"
-            exact
-            render={() => <CategoryResult />}
-          />
-
           {/* <Route
-            path="/category/all"
-            render={() => <ApiCards data={data} showContent={showContent} />}
+            path="category/:name"
+            render={() => <CategoryResult categoryData={categoryData} />}
           /> */}
         </Switch>
         <Global
@@ -134,7 +106,6 @@ function App() {
             }
 
             .api-card {
-              /* display: inline-block; */
               width: 350px;
             }
 

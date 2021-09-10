@@ -123,9 +123,8 @@ export const Categories: React.FC<CategoriesProps> = ({
       >
         {categories !== undefined &&
           categories.map((category: string | undefined) => (
-            <Link to={`/category/${category}`}>
+            <Link to={`/category/${category}`} key={category}>
               <p
-                key={category}
                 onClick={(e) => {
                   e.preventDefault;
                   setCategoryName(category);
