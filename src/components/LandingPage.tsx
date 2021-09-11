@@ -24,6 +24,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({}) => {
         grid-template-columns: repeat(5, 1fr);
         z-index: 2;
 
+        * {
+          margin: auto;
+        }
+
         .doodle {
           position: absolute;
           height: 250px;
