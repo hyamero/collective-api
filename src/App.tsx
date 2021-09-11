@@ -17,12 +17,20 @@ import { AllEntries } from "./components/AllEntries";
 function App() {
   const [allEntries, setAllEntries] = useState<any>();
   const [categories, setCategories] = useState<string | undefined>();
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    getAllEntries();
     getCategories();
-    console.log(categoryName);
+    getAllEntries();
   }, []);
+
+  const startLoading = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      console.log("timer stopped");
+    }, 2000);
+  };
 
   const getAllEntries = async () => {
     try {
@@ -92,6 +100,7 @@ function App() {
               <Categories
                 categories={categories}
                 setCategoryName={setCategoryName}
+                startLoading={startLoading}
               />
             )}
           />
@@ -104,7 +113,9 @@ function App() {
 
           <Route
             path="/category/:name"
-            render={() => <CategoryResult categoryData={categoryData} />}
+            render={() => (
+              <CategoryResult categoryData={categoryData} loading={loading} />
+            )}
           />
         </Switch>
         <Global

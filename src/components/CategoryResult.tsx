@@ -1,3 +1,4 @@
+/** @jsxFrag */
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
 import React, { useEffect } from "react";
@@ -7,15 +8,17 @@ import { Redirect } from "react-router";
 
 interface CategoryResultProps {
   categoryData: any;
+  loading: boolean;
 }
 
 export const CategoryResult: React.FC<CategoryResultProps> = ({
   categoryData,
+  loading,
 }) => {
   return (
     <div
       css={css`
-        height: 100vh;
+        height: 100%;
         width: 100vw;
         top: 0;
         padding: 50px;
@@ -28,21 +31,22 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
         padding-top: 150px;
 
         .category-data-container {
-          height: 155px;
-          width: 440px;
-          margin-bottom: 50px;
+          margin: 20px;
         }
       `}
     >
-      {categoryData !== null && categoryData !== undefined ? (
-        categoryData.map((entry: any) => (
-          <div key={entry.Link} className="category-data-container">
-            <CategoryEntry entry={entry} />
-          </div>
-        ))
-      ) : (
-        <Redirect to="/category/all-results" />
-        // <AllEntries />
+      {!loading && (
+        <>
+          {categoryData === null || categoryData === undefined ? (
+            <Redirect to="/category/all-results" />
+          ) : (
+            categoryData.map((entry: any) => (
+              <div key={entry.Link} className="category-data-container">
+                <CategoryEntry entry={entry} />
+              </div>
+            ))
+          )}
+        </>
       )}
     </div>
   );

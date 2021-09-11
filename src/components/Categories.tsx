@@ -9,11 +9,13 @@ import { FiSearch } from "react-icons/fi";
 interface CategoriesProps {
   categories: any;
   setCategoryName: React.Dispatch<React.SetStateAction<string | undefined>>;
+  startLoading: () => void;
 }
 
 export const Categories: React.FC<CategoriesProps> = ({
   categories,
   setCategoryName,
+  startLoading,
 }) => {
   return (
     <div
@@ -126,9 +128,9 @@ export const Categories: React.FC<CategoriesProps> = ({
           categories.map((category: string | undefined) => (
             <Link to={`/category/${category}`} key={category}>
               <p
-                onClick={(e) => {
-                  e.preventDefault;
+                onClick={() => {
                   setCategoryName(category);
+                  startLoading();
                 }}
               >
                 {category}
