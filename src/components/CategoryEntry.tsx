@@ -54,3 +54,5 @@ export const CategoryEntry: React.FC<CategoryEntryProps> = ({ entry }) => {
     </div>
   );
 };
+
+<button>lol what</button>;

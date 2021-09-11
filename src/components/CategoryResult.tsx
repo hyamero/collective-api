@@ -3,6 +3,7 @@ import { css, jsx } from "@emotion/react";
 import React, { useEffect } from "react";
 import { AllEntries } from "./AllEntries";
 import { CategoryEntry } from "./CategoryEntry";
+import { Redirect } from "react-router";
 
 interface CategoryResultProps {
   categoryData: any;
@@ -40,7 +41,8 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
           </div>
         ))
       ) : (
-        <AllEntries />
+        <Redirect to="/category/all-results" />
+        // <AllEntries />
       )}
     </div>
   );

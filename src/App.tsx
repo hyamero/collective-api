@@ -12,6 +12,7 @@ import { Categories } from "./components/Categories";
 import { CategoryResult } from "./components/CategoryResult";
 
 import background from "./img/Background.jpg";
+import { AllEntries } from "./components/AllEntries";
 
 function App() {
   const [allEntries, setAllEntries] = useState<any>();
@@ -20,6 +21,7 @@ function App() {
   useEffect(() => {
     getAllEntries();
     getCategories();
+    console.log(categoryName);
   }, []);
 
   const getAllEntries = async () => {
@@ -92,6 +94,12 @@ function App() {
                 setCategoryName={setCategoryName}
               />
             )}
+          />
+
+          <Route
+            path="/category/all-results"
+            exact
+            render={() => <AllEntries />}
           />
 
           <Route
