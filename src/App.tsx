@@ -1,7 +1,12 @@
 /** @jsx jsx */
 import { css, jsx, Global } from "@emotion/react";
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useHistory,
+} from "react-router-dom";
 import axios from "axios";
 import "css-maid";
 
@@ -19,9 +24,22 @@ function App() {
   const [categories, setCategories] = useState<string | undefined>();
   const [loading, setLoading] = useState<boolean>(true);
 
+  // const handleHome = () => {
+  //   let history = useHistory();
+
+  //   const handleReload = () => {
+  //     history.push("/");
+  //   };
+
+  //   useEffect(() => {
+  //     handleReload();
+  //   }, []);
+  // };
+
   useEffect(() => {
     getCategories();
     getAllEntries();
+    console.log(categoryData);
   }, []);
 
   const startLoading = () => {
@@ -105,11 +123,7 @@ function App() {
             )}
           />
 
-          <Route
-            path="/category/all-results"
-            exact
-            render={() => <AllEntries />}
-          />
+          <Route path="/category/all-results" render={() => <AllEntries />} />
 
           <Route
             path="/category/:name"
