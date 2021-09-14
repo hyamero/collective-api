@@ -23,7 +23,8 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
         top: 0;
         padding: 50px;
         position: absolute;
-        background-image: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%);
+        /* background-image: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%); */
+        background: #fff;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
@@ -59,12 +60,15 @@ export const CategoryEntry: React.FC<CategoryEntryProps> = ({ entry }) => {
         width: 410px;
         padding: 25px 30px;
         border-radius: 25px;
+        background: #ffffff;
+        box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
 
         .api-title-category {
           display: flex;
+          flex-wrap: wrap-reverse;
           justify-content: space-between;
           border-bottom: 2px solid #dcdcdc;
-          padding-bottom: 7px;
+          padding: 0 5px 7px 0;
 
           .api-title {
             font-size: 1rem;
@@ -72,9 +76,18 @@ export const CategoryEntry: React.FC<CategoryEntryProps> = ({ entry }) => {
             display: flex;
             align-items: center;
 
+            .small-text {
+              font-size: 0.85rem;
+            }
+
+            h3 {
+              display: inline-block;
+            }
+
             .icon-link {
               color: #a415ff;
               font-size: 0.8rem;
+              margin-left: 2px;
             }
           }
 
@@ -85,12 +98,48 @@ export const CategoryEntry: React.FC<CategoryEntryProps> = ({ entry }) => {
             font-weight: 600;
             padding: 4px 10px;
             border-radius: 50px;
+            margin-bottom: 5px;
           }
         }
 
         ul {
           display: flex;
-          justify-content: space-evenly;
+          justify-content: flex-start;
+          padding-left: 5px;
+
+          li {
+            font-size: 0.8rem;
+
+            span {
+              color: #7500bf;
+            }
+
+            &::before {
+              content: "";
+              height: 8px;
+              width: 8px;
+              background: #21ea00;
+              border-radius: 50%;
+              display: inline-block;
+              position: relative;
+              right: 5px;
+            }
+
+            &:not(:last-child) {
+              margin-right: 20px;
+
+              &::after {
+                content: "";
+                height: 15px;
+                width: 1.7px;
+                background: #bababa;
+                display: inline-block;
+                position: relative;
+                left: 7px;
+                top: 3px;
+              }
+            }
+          }
         }
 
         .entry-description {
@@ -102,7 +151,13 @@ export const CategoryEntry: React.FC<CategoryEntryProps> = ({ entry }) => {
     >
       <div className="api-title-category">
         <div className="api-title">
-          <h3>{entry.API}</h3>
+          <h3
+            className={`${
+              entry.API.split(" ").length >= 3 ? "small-text" : null
+            }`}
+          >
+            {entry.API}
+          </h3>
           <span>
             <FiExternalLink className="icon-link" />
           </span>
