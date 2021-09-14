@@ -128,7 +128,11 @@ function App() {
           <Route
             path="/category/:name"
             render={() => (
-              <CategoryResult categoryData={categoryData} loading={loading} />
+              <CategoryResult
+                categoryData={categoryData}
+                loading={loading}
+                categoryName={categoryName}
+              />
             )}
           />
         </Switch>

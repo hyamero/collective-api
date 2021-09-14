@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
+import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 
 interface CategoriesProps {
