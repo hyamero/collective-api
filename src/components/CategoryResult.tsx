@@ -114,17 +114,6 @@ export const CategoryEntry: React.FC<CategoryEntryProps> = ({ entry }) => {
               color: #7500bf;
             }
 
-            &::before {
-              content: "";
-              height: 8px;
-              width: 8px;
-              background: #21ea00;
-              border-radius: 50%;
-              display: inline-block;
-              position: relative;
-              right: 5px;
-            }
-
             &:not(:last-child) {
               margin-right: 20px;
 
@@ -138,6 +127,45 @@ export const CategoryEntry: React.FC<CategoryEntryProps> = ({ entry }) => {
                 left: 7px;
                 top: 3px;
               }
+            }
+          }
+
+          li.green {
+            &::before {
+              content: "";
+              height: 8px;
+              width: 8px;
+              background: #04f404;
+              border-radius: 50%;
+              display: inline-block;
+              position: relative;
+              right: 5px;
+            }
+          }
+
+          li.orange {
+            &::before {
+              content: "";
+              height: 8px;
+              width: 8px;
+              background: #ff8c00;
+              border-radius: 50%;
+              display: inline-block;
+              position: relative;
+              right: 5px;
+            }
+          }
+
+          li.red {
+            &::before {
+              content: "";
+              height: 8px;
+              width: 8px;
+              background: #ff0800;
+              border-radius: 50%;
+              display: inline-block;
+              position: relative;
+              right: 5px;
             }
           }
         }
@@ -166,13 +194,21 @@ export const CategoryEntry: React.FC<CategoryEntryProps> = ({ entry }) => {
       </div>
       <p className="entry-description">{entry.Description}</p>
       <ul>
-        <li>
+        <li className={`${entry.Auth === "" ? "green" : "orange"}`}>
           Auth: <span>{entry.Auth === "" ? "No Auth" : entry.Auth}</span>
         </li>
-        <li>
+        <li className={`${entry.HTTPS == true ? "green" : "red"}`}>
           HTTPS: <span>{entry.HTTPS.toString()}</span>
         </li>
-        <li>
+        <li
+          className={`${
+            entry.Cors === "yes"
+              ? "green"
+              : entry.Cors === "no"
+              ? "red"
+              : "orange"
+          }`}
+        >
           Cors: <span>{entry.Cors}</span>
         </li>
       </ul>

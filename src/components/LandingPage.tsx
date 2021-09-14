@@ -81,7 +81,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({}) => {
       <div className="hero-container">
         <p>
           ⚡ POWERED BY{" "}
-          <a href="https://github.com/public-apis/public-apis">PUBLIC APIS</a>{" "}
+          <a href="https://github.com/public-apis/public-apis" target="_blank">
+            PUBLIC APIS
+          </a>{" "}
         </p>
         <h1>
           Collective List of <br />
