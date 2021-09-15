@@ -17,6 +17,17 @@ export const Categories: React.FC<CategoriesProps> = ({
   setCategoryName,
   startLoading,
 }) => {
+  const [categoryFilter, setCategoryFilter] = useState<string | undefined>("");
+  const [categorySearch, setCategorySearch] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (categoryFilter === "") {
+      setCategorySearch(false);
+    } else {
+      setCategorySearch(true);
+    }
+  }, [categoryFilter]);
+
   return (
     <div
       className="Categories"
@@ -109,7 +120,11 @@ export const Categories: React.FC<CategoriesProps> = ({
           </Link>
         </div>
         <div className="searchbar">
-          <input type="text" placeholder="Search a Category" />
+          <input
+            type="text"
+            placeholder="Search a Category"
+            onChange={(e) => setCategoryFilter(e.target.value)}
+          />
           <div className="icon-search-container">
             <FiSearch className="icon-search" />
           </div>
@@ -124,19 +139,39 @@ export const Categories: React.FC<CategoriesProps> = ({
           background: #e0e0e0;
         `}
       >
-        {typeof categories !== "undefined" &&
-          categories.map((category: string | undefined) => (
-            <Link to={`/category/${category}`} key={category}>
-              <p
-                onClick={() => {
-                  setCategoryName(category);
-                  startLoading();
-                }}
-              >
-                {category}
-              </p>
-            </Link>
-          ))}
+        {typeof categories !== "undefined" && categorySearch === false
+          ? categories.map((category: string | undefined) => (
+              <Link to={`/category/${category}`} key={category}>
+                <p
+                  onClick={() => {
+                    setCategoryName(category);
+                    startLoading();
+                  }}
+                >
+                  {category}
+                </p>
+              </Link>
+            ))
+          : null}
+
+        {typeof categories !== "undefined" && categorySearch === true
+          ? categories
+              .filter((category: any) =>
+                category.toLowerCase().includes(categoryFilter?.toLowerCase())
+              )
+              .map((category: string | undefined) => (
+                <Link to={`/category/${category}`} key={category}>
+                  <p
+                    onClick={() => {
+                      setCategoryName(category);
+                      startLoading();
+                    }}
+                  >
+                    {category}
+                  </p>
+                </Link>
+              ))
+          : null}
       </div>
     </div>
   );
