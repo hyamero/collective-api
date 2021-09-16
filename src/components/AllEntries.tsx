@@ -1,6 +1,7 @@
 /** @jsx jsx */
+/**@jsxFrag */
 import { css, jsx } from "@emotion/react";
-import React from "react";
+import React, { useState } from "react";
 import { FiExternalLink } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
@@ -14,6 +15,7 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
   allEntries,
   loading,
 }) => {
+  const [showNumber, setShowNumber] = useState<number>(33);
   return (
     <div
       css={css`
@@ -99,29 +101,45 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
             }
           }
         }
+
+        button {
+          background: #b642ff;
+          color: #fff;
+          padding: 5px 20px;
+          border: none;
+          border-radius: 50px;
+          cursor: pointer;
+        }
       `}
     >
-      <div className="categories-header container">
-        <div className="category-main-text">
-          <h3>All APIs</h3>
-          <Link to="/api-results" className="all-link">
-            List all categories instead
-          </Link>
-        </div>
-        <div className="searchbar">
-          <input type="text" placeholder="Search a Category" />
-          <div className="icon-search-container">
-            <FiSearch className="icon-search" />
-          </div>
-        </div>
-      </div>
-      {!loading && typeof allEntries !== "undefined"
-        ? allEntries.map((entry: any) => (
-            <div key={entry.Link} className="category-data-container">
-              <CategoryEntry entry={entry} />
+      {!loading && (
+        <>
+          <div className="categories-header container">
+            <div className="category-main-text">
+              <h3>All APIs</h3>
+              <Link to="/api-results" className="all-link">
+                List all categories instead
+              </Link>
             </div>
-          ))
-        : !loading && <div>lol</div>}
+            <div className="searchbar">
+              <input type="text" placeholder="Search a Category" />
+              <div className="icon-search-container">
+                <FiSearch className="icon-search" />
+              </div>
+            </div>
+          </div>
+          {!loading && typeof allEntries !== "undefined"
+            ? allEntries.slice(0, showNumber).map((entry: any) => (
+                <div key={entry.Link} className="category-data-container">
+                  <CategoryEntry entry={entry} />
+                </div>
+              ))
+            : !loading && <div>lol</div>}
+          <button onClick={() => setShowNumber(showNumber + 33)}>
+            Show More
+          </button>
+        </>
+      )}
     </div>
   );
 };
@@ -174,7 +192,7 @@ export const CategoryEntry: React.FC<CategoryEntryProps> = ({ entry }) => {
             background: #b43dff;
             color: #fff;
             font-size: 0.7rem;
-            font-weight: 600;
+            font-weight: 500;
             padding: 4px 10px;
             border-radius: 50px;
             margin-bottom: 5px;
