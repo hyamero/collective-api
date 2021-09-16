@@ -22,7 +22,7 @@ import { AllEntries } from "./components/AllEntries";
 function App() {
   const [allEntries, setAllEntries] = useState<any>();
   const [categories, setCategories] = useState<string | undefined>();
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
 
   // const handleHome = () => {
   //   let history = useHistory();
@@ -39,7 +39,7 @@ function App() {
   useEffect(() => {
     getCategories();
     getAllEntries();
-    console.log(categoryData);
+    startLoading();
   }, []);
 
   const startLoading = () => {
@@ -89,7 +89,6 @@ function App() {
     try {
       const res = await axios.get(`${url}${categoryName}`);
       setCategoryData(res.data.entries);
-      console.table(res.data.entries);
     } catch (err) {
       console.error(err);
     }
@@ -123,7 +122,13 @@ function App() {
             )}
           />
 
-          <Route path="/category/all-results" render={() => <AllEntries />} />
+          <Route
+            path="/api-results"
+            exact
+            render={() => (
+              <AllEntries allEntries={allEntries} loading={loading} />
+            )}
+          />
 
           <Route
             path="/category/:name"
