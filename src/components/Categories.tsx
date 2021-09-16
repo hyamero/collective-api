@@ -32,9 +32,13 @@ export const Categories: React.FC<CategoriesProps> = ({
     <div
       className="Categories"
       css={css`
-        width: 80%;
-        max-width: 1280px;
-        margin: auto;
+        width: 100vw;
+        min-height: 100vh;
+        background: #f0f0f2;
+        position: absolute;
+        top: 0;
+        padding-top: 130px;
+        overflow-x: hidden;
 
         .categories-header {
           display: flex;
@@ -62,6 +66,9 @@ export const Categories: React.FC<CategoriesProps> = ({
           .searchbar {
             margin: 0 40px;
             position: relative;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            /* box-shadow: 1px 3px 4px #525252; */
 
             input {
               height: 2.2rem;
@@ -102,66 +109,65 @@ export const Categories: React.FC<CategoriesProps> = ({
           text-align: center;
           font-size: 0.8rem;
           font-weight: 400;
+          height: 40px;
           color: #fff;
           margin: 10px;
-          width: 210px;
+          width: 190px;
           background: linear-gradient(#b33cff, #c168fa);
           box-shadow: 1px 1px 2px #c168fa;
           padding: 10px 0;
           border-radius: 10px;
         }
+
+        .categories-container .smol {
+          font-size: 0.7rem;
+        }
       `}
     >
-      <div className="categories-header">
-        <div className="category-main-text">
-          <h3>Select a Category</h3>
-          <Link to="/results" className="all-link">
-            List all categories instead
-          </Link>
-        </div>
-        <div className="searchbar">
-          <input
-            type="text"
-            placeholder="Search a Category"
-            onChange={(e) => setCategoryFilter(e.target.value)}
-          />
-          <div className="icon-search-container">
-            <FiSearch className="icon-search" />
-          </div>
-        </div>
-      </div>
       <div
-        className="categories-container"
+        className="wrapper"
         css={css`
-          display: flex;
-          flex-flow: row wrap;
-          justify-content: center;
-          background: #e0e0e0;
+          width: 80%;
+          max-width: 1280px;
+          margin: auto;
         `}
       >
-        {typeof categories !== "undefined" && categorySearch === false
-          ? categories.map((category: string | undefined) => (
-              <Link to={`/category/${category}`} key={category}>
-                <p
-                  onClick={() => {
-                    setCategoryName(category);
-                    startLoading();
-                  }}
-                >
-                  {category}
-                </p>
-              </Link>
-            ))
-          : null}
-
-        {typeof categories !== "undefined" && categorySearch === true
-          ? categories
-              .filter((category: any) =>
-                category.toLowerCase().includes(categoryFilter?.toLowerCase())
-              )
-              .map((category: string | undefined) => (
+        <div className="categories-header">
+          <div className="category-main-text">
+            <h3>Select a Category</h3>
+            <Link to="/results" className="all-link">
+              List all categories instead
+            </Link>
+          </div>
+          <div className="searchbar">
+            <input
+              type="text"
+              placeholder="Search a Category"
+              onChange={(e) => setCategoryFilter(e.target.value)}
+            />
+            <div className="icon-search-container">
+              <FiSearch className="icon-search" />
+            </div>
+          </div>
+        </div>
+        <div
+          className="categories-container"
+          css={css`
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            background: #fff;
+            border-radius: 50px;
+            padding: 50px;
+          `}
+        >
+          {typeof categories !== "undefined" && categorySearch === false
+            ? categories.map((category: string | undefined) => (
                 <Link to={`/category/${category}`} key={category}>
                   <p
+                    className={`${
+                      category!.split("").length >= 22 ? "smol" : null
+                    }`}
                     onClick={() => {
                       setCategoryName(category);
                       startLoading();
@@ -171,7 +177,30 @@ export const Categories: React.FC<CategoriesProps> = ({
                   </p>
                 </Link>
               ))
-          : null}
+            : null}
+
+          {typeof categories !== "undefined" && categorySearch === true
+            ? categories
+                .filter((category: any) =>
+                  category.toLowerCase().includes(categoryFilter?.toLowerCase())
+                )
+                .map((category: string | undefined) => (
+                  <Link to={`/category/${category}`} key={category}>
+                    <p
+                      className={`${
+                        category!.split(" ").length >= 2 ? "smol" : null
+                      }`}
+                      onClick={() => {
+                        setCategoryName(category);
+                        startLoading();
+                      }}
+                    >
+                      {category}
+                    </p>
+                  </Link>
+                ))
+            : null}
+        </div>
       </div>
     </div>
   );
