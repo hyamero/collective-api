@@ -54,7 +54,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
         <Link className="btn-nav" to="/information">
           Information
         </Link>
-        <Link className="btn-nav" to="/all-results">
+        <Link className="btn-nav" to="/api-results">
           Find APIs
         </Link>
       </div>

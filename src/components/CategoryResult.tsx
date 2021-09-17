@@ -3,8 +3,8 @@
 import { css, jsx } from "@emotion/react";
 import React, { useEffect } from "react";
 import { AllEntries } from "./AllEntries";
-import { FiExternalLink } from "react-icons/fi";
 import { Redirect } from "react-router";
+import { FiExternalLink } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 
@@ -109,7 +109,7 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
       <div className="categories-header container">
         <div className="category-main-text">
           <h3>APIs related to {categoryName}</h3>
-          <Link to="/results" className="all-link">
+          <Link to="/api-results" className="all-link">
             List all categories instead
           </Link>
         </div>
@@ -120,13 +120,13 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
           </div>
         </div>
       </div>
-      {!loading && categoryData !== null
+      {!loading && typeof categoryData !== "undefined" && categoryData !== null
         ? categoryData.map((entry: any) => (
             <div key={entry.Link} className="category-data-container">
               <CategoryEntry entry={entry} />
             </div>
           ))
-        : !loading && <Redirect to="/category/all-results" />}
+        : !loading && <Redirect to="/api-results" />}
     </div>
   );
 };
@@ -179,7 +179,7 @@ export const CategoryEntry: React.FC<CategoryEntryProps> = ({ entry }) => {
             background: #b43dff;
             color: #fff;
             font-size: 0.7rem;
-            font-weight: 600;
+            font-weight: 500;
             padding: 4px 10px;
             border-radius: 50px;
             margin-bottom: 5px;

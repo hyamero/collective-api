@@ -19,6 +19,7 @@ export const Categories: React.FC<CategoriesProps> = ({
 }) => {
   const [categoryFilter, setCategoryFilter] = useState<string | undefined>("");
   const [categorySearch, setCategorySearch] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
 
   useEffect(() => {
     if (categoryFilter === "") {
@@ -135,7 +136,7 @@ export const Categories: React.FC<CategoriesProps> = ({
         <div className="categories-header">
           <div className="category-main-text">
             <h3>Select a Category</h3>
-            <Link to="/results" className="all-link">
+            <Link to="/api-results" className="all-link">
               List all categories instead
             </Link>
           </div>
@@ -161,6 +162,7 @@ export const Categories: React.FC<CategoriesProps> = ({
             padding: 50px;
           `}
         >
+          {message}
           {typeof categories !== "undefined" && categorySearch === false
             ? categories.map((category: string | undefined) => (
                 <Link to={`/category/${category}`} key={category}>
@@ -188,7 +190,7 @@ export const Categories: React.FC<CategoriesProps> = ({
                   <Link to={`/category/${category}`} key={category}>
                     <p
                       className={`${
-                        category!.split(" ").length >= 2 ? "smol" : null
+                        category!.split(" ").length >= 22 ? "smol" : null
                       }`}
                       onClick={() => {
                         setCategoryName(category);
