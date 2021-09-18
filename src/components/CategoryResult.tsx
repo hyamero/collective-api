@@ -106,27 +106,33 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
         }
       `}
     >
-      <div className="categories-header container">
-        <div className="category-main-text">
-          <h3>APIs related to {categoryName}</h3>
-          <Link to="/api-results" className="all-link">
-            List all categories instead
-          </Link>
-        </div>
-        <div className="searchbar">
-          <input type="text" placeholder="Search a Category" />
-          <div className="icon-search-container">
-            <FiSearch className="icon-search" />
-          </div>
-        </div>
-      </div>
-      {!loading && typeof categoryData !== "undefined" && categoryData !== null
-        ? categoryData.map((entry: any) => (
-            <div key={entry.Link} className="category-data-container">
-              <CategoryEntry entry={entry} />
+      {!loading && (
+        <>
+          <div className="categories-header container">
+            <div className="category-main-text">
+              <h3>APIs related to {categoryName}</h3>
+              <Link to="/api-results" className="all-link">
+                List all categories instead
+              </Link>
             </div>
-          ))
-        : !loading && <Redirect to="/api-results" />}
+            <div className="searchbar">
+              <input type="text" placeholder="Search a Category" />
+              <div className="icon-search-container">
+                <FiSearch className="icon-search" />
+              </div>
+            </div>
+          </div>
+          {typeof categoryData !== "undefined" && categoryData !== null ? (
+            categoryData.map((entry: any) => (
+              <div key={entry.Link} className="category-data-container">
+                <CategoryEntry entry={entry} />
+              </div>
+            ))
+          ) : (
+            <Redirect to="/api-results" />
+          )}
+        </>
+      )}
     </div>
   );
 };

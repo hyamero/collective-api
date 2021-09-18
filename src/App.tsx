@@ -25,18 +25,6 @@ function App() {
   const [categories, setCategories] = useState<string | undefined>();
   const [loading, setLoading] = useState<boolean>(false);
 
-  // const handleHome = () => {
-  //   let history = useHistory();
-
-  //   const handleReload = () => {
-  //     history.push("/");
-  //   };
-
-  //   useEffect(() => {
-  //     handleReload();
-  //   }, []);
-  // };
-
   useEffect(() => {
     getCategories();
     getAllEntries();

@@ -26,7 +26,6 @@ export const SearchResult: React.FC<SearchResultProps> = ({
         padding: 50px;
         position: absolute;
         top: 0;
-        /* background-image: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%); */
         background: #fff;
         display: flex;
         justify-content: center;
