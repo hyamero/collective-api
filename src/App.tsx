@@ -103,6 +103,7 @@ function App() {
     const url = "https://api.publicapis.org/entries?title=";
     try {
       const res = await axios.get(`${url}${keyword}`);
+      setSearchResult(res.data.entries);
       console.log(res.data);
     } catch (err) {
       console.error(err);
@@ -165,7 +166,13 @@ function App() {
           <Route
             exact
             path="/search/:keyword"
-            render={() => <SearchResult searchResult={searchResult} />}
+            render={() => (
+              <SearchResult
+                searchResult={searchResult}
+                loading={loading}
+                keyword={keyword}
+              />
+            )}
           />
         </Switch>
         <Global
