@@ -1,7 +1,7 @@
 /** @jsx jsx */
 /**@jsxFrag */
 import { css, jsx } from "@emotion/react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FiExternalLink } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
@@ -16,6 +16,17 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
   loading,
 }) => {
   const [showNumber, setShowNumber] = useState<number>(33);
+  const [keyword, setKeyword] = useState<string>("");
+  const [search, setSearch] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (keyword === "") {
+      setSearch(false);
+    } else {
+      setSearch(true);
+    }
+  }, [keyword]);
+
   return (
     <div
       css={css`
@@ -122,22 +133,40 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
               </Link>
             </div>
             <div className="searchbar">
-              <input type="text" placeholder="Search a Category" />
+              <input
+                type="text"
+                placeholder="Search an API"
+                onChange={(e) => setKeyword(e.target.value)}
+              />
               <div className="icon-search-container">
                 <FiSearch className="icon-search" />
               </div>
             </div>
           </div>
-          {!loading && typeof allEntries !== "undefined"
+          {!search && typeof allEntries !== "undefined"
             ? allEntries.slice(0, showNumber).map((entry: any) => (
                 <div key={entry.Link} className="category-data-container">
                   <CategoryEntry entry={entry} />
                 </div>
               ))
-            : !loading && <div>lol</div>}
-          <button onClick={() => setShowNumber(showNumber + 33)}>
-            Show More
-          </button>
+            : !search && <div>lol</div>}
+          {!search && (
+            <button onClick={() => setShowNumber(showNumber + 33)}>
+              Show More
+            </button>
+          )}
+
+          {search && typeof allEntries !== "undefined"
+            ? allEntries
+                .filter((entry: any) =>
+                  entry.API.toLowerCase().includes(keyword.toLocaleLowerCase())
+                )
+                .map((entry: any) => (
+                  <div key={entry.Link} className="category-data-container">
+                    <CategoryEntry entry={entry} />
+                  </div>
+                ))
+            : search && <div>lol</div>}
         </>
       )}
     </div>
