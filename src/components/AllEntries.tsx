@@ -129,7 +129,7 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
               </Link>
             </div>
             <div className="searchbar">
-              <form onSubmit={(e) => history.push(`/search=${keyword}`)}>
+              <form onSubmit={() => history.push(`/search/${keyword}`)}>
                 <input
                   type="text"
                   placeholder="Search an API"

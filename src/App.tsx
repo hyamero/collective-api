@@ -15,6 +15,7 @@ import { Navbar } from "./components/Navbar";
 import { LandingPage } from "./components/LandingPage";
 import { Categories } from "./components/Categories";
 import { CategoryResult } from "./components/CategoryResult";
+import { SearchResult } from "./components/SearchResult";
 
 import background from "./img/Background.jpg";
 import { AllEntries } from "./components/AllEntries";
@@ -23,6 +24,7 @@ function App() {
   const [allEntries, setAllEntries] = useState<any>();
   const [categories, setCategories] = useState<string | undefined>();
   const [loading, setLoading] = useState<boolean>(false);
+  const [keyword, setKeyword] = useState<string>("");
 
   // const handleHome = () => {
   //   let history = useHistory();
@@ -100,7 +102,7 @@ function App() {
         className="App"
         css={css`
           height: 100vh;
-          background: url(${background});
+          /* background: url(${background}); */
           background-size: cover;
           overflow-x: hidden;
           z-index: 1;
@@ -126,7 +128,12 @@ function App() {
             path="/api-results"
             exact
             render={() => (
-              <AllEntries allEntries={allEntries} loading={loading} />
+              <AllEntries
+                allEntries={allEntries}
+                loading={loading}
+                keyword={keyword}
+                setKeyword={setKeyword}
+              />
             )}
           />
 
@@ -139,6 +146,12 @@ function App() {
                 categoryName={categoryName}
               />
             )}
+          />
+
+          <Route
+            exact
+            path="/search/:keyword"
+            render={() => <SearchResult keyword={keyword} />}
           />
         </Switch>
         <Global
