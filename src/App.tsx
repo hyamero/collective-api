@@ -147,6 +147,9 @@ function App() {
                 categoryData={categoryData}
                 loading={loading}
                 categoryName={categoryName}
+                keyword={keyword}
+                setKeyword={setKeyword}
+                getSearchResult={getSearchResult}
               />
             )}
           />

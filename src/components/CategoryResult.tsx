@@ -5,20 +5,28 @@ import React, { useEffect } from "react";
 import { AllEntries } from "./AllEntries";
 import { Redirect } from "react-router";
 import { FiExternalLink } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 
 interface CategoryResultProps {
   categoryData: any;
   loading: boolean;
   categoryName: string | undefined;
+  keyword: string;
+  setKeyword: React.Dispatch<React.SetStateAction<string>>;
+  getSearchResult: () => Promise<void>;
 }
 
 export const CategoryResult: React.FC<CategoryResultProps> = ({
   categoryData,
   loading,
   categoryName,
+  keyword,
+  setKeyword,
+  getSearchResult,
 }) => {
+  let history = useHistory();
+
   return (
     <div
       css={css`
@@ -116,7 +124,19 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
               </Link>
             </div>
             <div className="searchbar">
-              <input type="text" placeholder="Search a Category" />
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  history.push(`/search/${keyword}`);
+                  getSearchResult();
+                }}
+              >
+                <input
+                  type="text"
+                  placeholder="Search an API"
+                  onChange={(e) => setKeyword(e.target.value)}
+                />
+              </form>
               <div className="icon-search-container">
                 <FiSearch className="icon-search" />
               </div>

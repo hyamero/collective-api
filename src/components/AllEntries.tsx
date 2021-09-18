@@ -132,7 +132,8 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
             </div>
             <div className="searchbar">
               <form
-                onSubmit={() => {
+                onSubmit={(e) => {
+                  e.preventDefault();
                   history.push(`/search/${keyword}`);
                   getSearchResult();
                 }}
