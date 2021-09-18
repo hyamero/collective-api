@@ -11,6 +11,7 @@ interface AllEntriesProps {
   loading: boolean;
   keyword: string;
   setKeyword: React.Dispatch<React.SetStateAction<string>>;
+  getSearchResult: () => Promise<void>;
 }
 
 export const AllEntries: React.FC<AllEntriesProps> = ({
@@ -18,6 +19,7 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
   loading,
   keyword,
   setKeyword,
+  getSearchResult,
 }) => {
   const [showNumber, setShowNumber] = useState<number>(33);
 
@@ -129,7 +131,12 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
               </Link>
             </div>
             <div className="searchbar">
-              <form onSubmit={() => history.push(`/search/${keyword}`)}>
+              <form
+                onSubmit={() => {
+                  history.push(`/search/${keyword}`);
+                  getSearchResult();
+                }}
+              >
                 <input
                   type="text"
                   placeholder="Search an API"

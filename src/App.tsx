@@ -24,7 +24,6 @@ function App() {
   const [allEntries, setAllEntries] = useState<any>();
   const [categories, setCategories] = useState<string | undefined>();
   const [loading, setLoading] = useState<boolean>(false);
-  const [keyword, setKeyword] = useState<string>("");
 
   // const handleHome = () => {
   //   let history = useHistory();
@@ -96,6 +95,20 @@ function App() {
     }
   };
 
+  //Call by keywords
+  const [keyword, setKeyword] = useState<string>("");
+  const [searchResult, setSearchResult] = useState<any>();
+
+  const getSearchResult = async () => {
+    const url = "https://api.publicapis.org/entries?title=";
+    try {
+      const res = await axios.get(`${url}${keyword}`);
+      console.log(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <Router>
       <div
@@ -133,6 +146,7 @@ function App() {
                 loading={loading}
                 keyword={keyword}
                 setKeyword={setKeyword}
+                getSearchResult={getSearchResult}
               />
             )}
           />
@@ -151,7 +165,7 @@ function App() {
           <Route
             exact
             path="/search/:keyword"
-            render={() => <SearchResult keyword={keyword} />}
+            render={() => <SearchResult searchResult={searchResult} />}
           />
         </Switch>
         <Global

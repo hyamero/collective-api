@@ -4,19 +4,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 interface SearchResultProps {
-  keyword: string;
+  searchResult: any;
 }
 
-export const SearchResult: React.FC<SearchResultProps> = ({ keyword }) => {
-  const getSearchResult = async () => {
-    const url = "https://api.publicapis.org/entries?title=";
-    try {
-      const res = await axios.get(`${url}${keyword}`);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
+export const SearchResult: React.FC<SearchResultProps> = ({ searchResult }) => {
   return (
     <div
       css={css`
