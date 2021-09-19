@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { css, jsx, Global } from "@emotion/react";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -98,6 +98,39 @@ function App() {
     }
   };
 
+  //Scroll check
+  const [scrollDown, setScrollDown] = useState(false);
+  const [scrollUp, setScrollUp] = useState(false);
+
+  const [scroll, setScroll] = useState(false);
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setScroll(window.scrollY > 10);
+    });
+  }, []);
+
+  //Scroll Down
+  const drinkEndRef = useRef<any>(null);
+
+  const scrollToBottom = () => {
+    drinkEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    if (scrollDown || !scrollDown) scrollToBottom();
+  }, [scrollDown]);
+
+  //Scroll Up
+  const drinkStartRef = useRef<any>(null);
+
+  const scrollToTop = () => {
+    drinkStartRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    if (scrollUp || !scrollUp) scrollToTop();
+  }, [scrollUp]);
+
   return (
     <Router>
       <div
@@ -110,7 +143,7 @@ function App() {
           z-index: 1;
         `}
       >
-        <Navbar />
+        <Navbar scroll={scroll} />
         <Switch>
           <Route path="/" exact render={() => <LandingPage />} />
 
@@ -185,6 +218,30 @@ function App() {
               width: 69%;
               max-width: 1280px;
               margin: auto;
+            }
+
+            .Navbar {
+              height: 100px;
+              margin-bottom: 25px;
+              padding-top: 25px;
+              position: relative;
+              z-index: 3;
+              width: 100vw;
+              transition: linear 0.3s;
+              overflow-x: hidden;
+            }
+
+            .nav-scroll {
+              background: #e0e0e0;
+              height: 100px;
+              margin-bottom: 25px;
+              padding-top: 25px;
+              width: 100vw;
+              position: fixed;
+              z-index: 3;
+              transition: linear 0.2s;
+              border-radius: 50px;
+              overflow-x: hidden;
             }
           `}
         />

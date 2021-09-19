@@ -47,6 +47,7 @@ export const Categories: React.FC<CategoriesProps> = ({
           justify-content: space-between;
           align-items: center;
           margin-bottom: 15px;
+          overflow-x: hidden;
 
           .category-main-text {
             margin: 0 40px;
@@ -132,6 +133,7 @@ export const Categories: React.FC<CategoriesProps> = ({
           width: 80%;
           max-width: 1280px;
           margin: auto;
+          overflow-x: hidden;
         `}
       >
         <div className="categories-header">
