@@ -35,7 +35,7 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
         padding: 50px;
         position: absolute;
         /* background-image: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%); */
-        background: #fff;
+        background: #f0f0f2;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
@@ -86,12 +86,10 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
               position: relative;
               z-index: 2;
               background: #ffffff;
-              box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
             }
 
             .icon-search-container {
               background: #ffffff;
-              box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
               position: absolute;
               left: -1.8rem;
               bottom: 0;
@@ -165,12 +163,11 @@ export const CategoryEntry: React.FC<CategoryEntryProps> = ({ entry }) => {
     <div
       className="CategoryEntry"
       css={css`
-        background: #fff;
         width: 410px;
         padding: 25px 30px;
         border-radius: 25px;
-        background: #ffffff;
-        box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+        background: #fff;
+        box-shadow: 1px 1px 4px #e0e0e0;
 
         .api-title-category {
           display: flex;
