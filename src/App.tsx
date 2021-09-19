@@ -143,7 +143,7 @@ function App() {
           z-index: 1;
         `}
       >
-        <Navbar scroll={scroll} />
+        <Navbar />
         <Switch>
           <Route path="/" exact render={() => <LandingPage />} />
 
@@ -218,30 +218,6 @@ function App() {
               width: 69%;
               max-width: 1280px;
               margin: auto;
-            }
-
-            .Navbar {
-              height: 100px;
-              margin-bottom: 25px;
-              padding-top: 25px;
-              position: relative;
-              z-index: 3;
-              width: 100vw;
-              transition: linear 0.3s;
-              overflow-x: hidden;
-            }
-
-            .nav-scroll {
-              background: #e0e0e0;
-              height: 100px;
-              margin-bottom: 25px;
-              padding-top: 25px;
-              width: 100vw;
-              position: fixed;
-              z-index: 3;
-              transition: linear 0.2s;
-              border-radius: 50px;
-              overflow-x: hidden;
             }
           `}
         />

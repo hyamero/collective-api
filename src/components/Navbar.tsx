@@ -3,13 +3,23 @@ import { css, jsx } from "@emotion/react";
 import React from "react";
 import { Link } from "react-router-dom";
 
-interface NavbarProps {
-  scroll: boolean;
-}
+interface NavbarProps {}
 
-export const Navbar: React.FC<NavbarProps> = ({ scroll }) => {
+export const Navbar: React.FC<NavbarProps> = ({}) => {
   return (
-    <nav className={`${scroll ? "nav-scroll" : "Navbar"}`} css={css``}>
+    <nav
+      className="Navbar"
+      css={css`
+        height: 100px;
+        margin-bottom: 25px;
+        padding-top: 25px;
+        position: relative;
+        z-index: 3;
+        width: 100vw;
+        transition: linear 0.3s;
+        overflow-x: hidden;
+      `}
+    >
       <div
         className="container"
         css={css`
