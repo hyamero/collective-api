@@ -1,8 +1,7 @@
 /** @jsx jsx */
 /**@jsxFrag */
 import { css, jsx } from "@emotion/react";
-import React, { useEffect, useState } from "react";
-import { Redirect } from "react-router";
+import React from "react";
 import { FiExternalLink } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
@@ -71,7 +70,6 @@ export const SearchResult: React.FC<SearchResultProps> = ({
               width: 300px;
               border-top-right-radius: 10px;
               border-bottom-right-radius: 10px;
-              /* border-radius: 15px; */
               border: none;
               font-size: 0.9rem;
               padding: 0 10px;

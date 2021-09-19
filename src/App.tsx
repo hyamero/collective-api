@@ -17,8 +17,6 @@ import { LandingPage } from "./components/LandingPage";
 import { Categories } from "./components/Categories";
 import { CategoryResult } from "./components/CategoryResult";
 import { SearchResult } from "./components/SearchResult";
-
-import background from "./img/Background.jpg";
 import { AllEntries } from "./components/AllEntries";
 
 function App() {
@@ -100,7 +98,6 @@ function App() {
   };
 
   //Scroll check
-  const [scrollDown, setScrollDown] = useState(false);
   const [scrollUp, setScrollUp] = useState(false);
 
   const [scroll, setScroll] = useState(false);
@@ -109,17 +106,6 @@ function App() {
       setScroll(window.scrollY > 150);
     });
   }, []);
-
-  //Scroll Down
-  // const drinkEndRef = useRef<any>(null);
-
-  // const scrollToBottom = () => {
-  //   drinkEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  // };
-
-  // useEffect(() => {
-  //   if (scrollDown || !scrollDown) scrollToBottom();
-  // }, [scrollDown]);
 
   //Scroll Up
   const startRef = useRef<HTMLDivElement>(null);
@@ -138,8 +124,6 @@ function App() {
         className="App"
         css={css`
           height: 100vh;
-          /* background: url(${background}); */
-          background-size: cover;
           overflow-x: hidden;
           z-index: 1;
 

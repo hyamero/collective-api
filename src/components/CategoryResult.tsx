@@ -1,8 +1,7 @@
 /** @jsxFrag */
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
-import React, { useEffect } from "react";
-import { AllEntries } from "./AllEntries";
+import React from "react";
 import { Redirect } from "react-router";
 import { FiExternalLink } from "react-icons/fi";
 import { Link, useHistory } from "react-router-dom";
@@ -34,7 +33,6 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
         top: 0;
         padding: 50px;
         position: absolute;
-        /* background-image: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%); */
         background: #f0f0f2;
         display: flex;
         justify-content: center;
@@ -79,7 +77,6 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
               width: 300px;
               border-top-right-radius: 10px;
               border-bottom-right-radius: 10px;
-              /* border-radius: 15px; */
               border: none;
               font-size: 0.9rem;
               padding: 0 10px;
