@@ -28,7 +28,6 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
   return (
     <div
       css={css`
-        height: 100%;
         width: 100vw;
         top: 0;
         padding: 50px;

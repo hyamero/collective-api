@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import axios from "axios";
 import "css-maid";
+import { FiArrowUpCircle } from "react-icons/fi";
 
 //components
 import { Navbar } from "./components/Navbar";
@@ -110,21 +111,21 @@ function App() {
   }, []);
 
   //Scroll Down
-  const drinkEndRef = useRef<any>(null);
+  // const drinkEndRef = useRef<any>(null);
 
-  const scrollToBottom = () => {
-    drinkEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  // const scrollToBottom = () => {
+  //   drinkEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  // };
 
-  useEffect(() => {
-    if (scrollDown || !scrollDown) scrollToBottom();
-  }, [scrollDown]);
+  // useEffect(() => {
+  //   if (scrollDown || !scrollDown) scrollToBottom();
+  // }, [scrollDown]);
 
   //Scroll Up
-  const drinkStartRef = useRef<any>(null);
+  const startRef = useRef<HTMLDivElement>(null);
 
   const scrollToTop = () => {
-    drinkStartRef.current?.scrollIntoView({ behavior: "smooth" });
+    startRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -141,9 +142,31 @@ function App() {
           background-size: cover;
           overflow-x: hidden;
           z-index: 1;
+
+          .up-ref {
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 0;
+          }
+
+          .icon-up {
+            color: #000;
+            height: 40px;
+            width: 40px;
+            position: absolute;
+            top: 50vh;
+            right: 3rem;
+            z-index: 3;
+          }
         `}
       >
         <Navbar />
+        <div className="up-ref" ref={startRef}></div>
+        <FiArrowUpCircle
+          className="icon-up"
+          onClick={() => setScrollUp(!scrollUp)}
+        />
         <Switch>
           <Route path="/" exact render={() => <LandingPage />} />
 
@@ -208,6 +231,11 @@ function App() {
               padding: none;
               box-sizing: border-box;
               font-family: "Poppins", sans-serif;
+            }
+
+            body,
+            html {
+              overflow-x: hidden;
             }
 
             .api-card {
