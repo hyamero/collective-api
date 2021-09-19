@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import axios from "axios";
 import "css-maid";
-import { FiArrowUpCircle } from "react-icons/fi";
+import { RiArrowUpSFill } from "react-icons/ri";
 
 //components
 import { Navbar } from "./components/Navbar";
@@ -106,7 +106,7 @@ function App() {
   const [scroll, setScroll] = useState(false);
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      setScroll(window.scrollY > 10);
+      setScroll(window.scrollY > 150);
     });
   }, []);
 
@@ -151,22 +151,27 @@ function App() {
           }
 
           .icon-up {
-            color: #000;
-            height: 40px;
-            width: 40px;
-            position: absolute;
-            top: 50vh;
-            right: 3rem;
+            color: #7004b4;
+            height: 35px;
+            width: 35px;
+            position: fixed;
+            bottom: 10vh;
+            right: 2rem;
+            border: 3px #b642ff solid;
+            border-radius: 50%;
+            transition: linear 0.3s;
             z-index: 3;
           }
         `}
       >
         <Navbar />
         <div className="up-ref" ref={startRef}></div>
-        <FiArrowUpCircle
-          className="icon-up"
-          onClick={() => setScrollUp(!scrollUp)}
-        />
+        {scroll && (
+          <RiArrowUpSFill
+            className="icon-up"
+            onClick={() => setScrollUp(!scrollUp)}
+          />
+        )}
         <Switch>
           <Route path="/" exact render={() => <LandingPage />} />
 
