@@ -8,9 +8,11 @@ import doodle from "../img/doodle-5.png";
 import doodle1 from "../img/doodle-4.png";
 import background from "../img/Background.jpg";
 
-interface LandingPageProps {}
+interface LandingPageProps {
+  loading: boolean;
+}
 
-export const LandingPage: React.FC<LandingPageProps> = ({}) => {
+export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
   return (
     <header
       className="LandingPage"
@@ -25,6 +27,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({}) => {
         grid-template-columns: repeat(5, 1fr);
         z-index: 2;
         background: url(${background});
+        background-size: cover;
 
         * {
           margin: auto;

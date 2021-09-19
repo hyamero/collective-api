@@ -107,17 +107,6 @@ function App() {
     });
   }, []);
 
-  //Scroll Up
-  const startRef = useRef<HTMLDivElement>(null);
-
-  const scrollToTop = () => {
-    startRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  useEffect(() => {
-    if (scrollUp || !scrollUp) scrollToTop();
-  }, [scrollUp]);
-
   return (
     <Router>
       <div
@@ -149,15 +138,18 @@ function App() {
         `}
       >
         <Navbar />
-        <div className="up-ref" ref={startRef}></div>
         {scroll && (
           <RiArrowUpSFill
             className="icon-up"
-            onClick={() => setScrollUp(!scrollUp)}
+            onClick={() => window.scrollTo(0, 0)}
           />
         )}
         <Switch>
-          <Route path="/" exact render={() => <LandingPage />} />
+          <Route
+            path="/"
+            exact
+            render={() => <LandingPage loading={loading} />}
+          />
 
           <Route
             path="/category"
@@ -225,6 +217,7 @@ function App() {
             body,
             html {
               overflow-x: hidden;
+              scroll-behavior: smooth;
             }
 
             .api-card {
