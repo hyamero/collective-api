@@ -103,7 +103,7 @@ function App() {
   const [scroll, setScroll] = useState(false);
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      setScroll(window.scrollY > 150);
+      setScroll(window.scrollY > 50);
     });
   }, []);
 
@@ -124,20 +124,21 @@ function App() {
           }
 
           .icon-up {
-            color: #7004b4;
+            color: #000;
             height: 35px;
             width: 35px;
             position: fixed;
             bottom: 10vh;
             right: 2rem;
             border: 3px #b642ff solid;
+            background: rgba(180, 61, 255, 0.2);
             border-radius: 50%;
             transition: linear 0.3s;
             z-index: 3;
           }
         `}
       >
-        <Navbar />
+        <Navbar scroll={scroll} />
         {scroll && (
           <RiArrowUpSFill
             className="icon-up"
@@ -226,6 +227,12 @@ function App() {
 
             .container {
               width: 69%;
+              max-width: 1280px;
+              margin: auto;
+            }
+
+            .container-big {
+              width: 80%;
               max-width: 1280px;
               margin: auto;
             }
