@@ -221,6 +221,27 @@ function App() {
               scroll-behavior: smooth;
             }
 
+            ::selection {
+              background: rgba(180, 61, 255, 0.5);
+              color: #1b1b1b;
+            }
+
+            ::-webkit-scrollbar {
+              width: 4px;
+              height: 4px;
+              border: 1px solid #d5d5d5;
+            }
+
+            ::-webkit-scrollbar-track {
+              border-radius: 30px;
+              background: #fff;
+            }
+
+            ::-webkit-scrollbar-thumb {
+              border-radius: 30px;
+              background: #7d2ab2;
+            }
+
             .api-card {
               width: 350px;
             }
