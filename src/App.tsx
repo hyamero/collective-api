@@ -18,6 +18,7 @@ import { Categories } from "./components/Categories";
 import { CategoryResult } from "./components/CategoryResult";
 import { SearchResult } from "./components/SearchResult";
 import { AllEntries } from "./components/AllEntries";
+import { Loader } from "./components/Loader";
 
 function App() {
   const [allEntries, setAllEntries] = useState<any>();
@@ -35,7 +36,7 @@ function App() {
     setTimeout(() => {
       setLoading(false);
       console.log("timer stopped");
-    }, 2000);
+    }, 2200);
   };
 
   const getAllEntries = async () => {
@@ -145,6 +146,7 @@ function App() {
             onClick={() => window.scrollTo(0, 0)}
           />
         )}
+        {loading && <Loader />}
         <Switch>
           <Route
             path="/"
