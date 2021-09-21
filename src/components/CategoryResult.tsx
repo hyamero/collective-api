@@ -6,7 +6,7 @@ import { Redirect } from "react-router";
 import { FiExternalLink } from "react-icons/fi";
 import { Link, useHistory } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
-import "aos/dist/aos.css";
+// import "aos/dist/aos.css";
 
 interface CategoryResultProps {
   categoryData: any;
@@ -170,7 +170,7 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
               <div
                 key={entry.Link}
                 className="category-data-container"
-                data-aos="fade-up"
+                // data-aos="fade-up"
               >
                 <CategoryEntry entry={entry} />
               </div>

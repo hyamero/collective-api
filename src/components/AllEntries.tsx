@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import { FiExternalLink } from "react-icons/fi";
 import { Link, useHistory } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
-import "aos/dist/aos.css";
+// import "aos/dist/aos.css";
 
 interface AllEntriesProps {
   allEntries: any;
@@ -119,6 +119,8 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
           cursor: pointer;
           height: 35px;
           position: absolute;
+          margin: auto;
+          bottom: 1.4rem;
         }
       `}
     >
@@ -157,7 +159,7 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
                   target="_blank"
                   key={entry.Link}
                   className="category-data-container"
-                  data-aos="fade-up"
+                  // data-aos="fade-up"
                 >
                   <CategoryEntry entry={entry} />
                 </a>
