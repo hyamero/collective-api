@@ -14,6 +14,7 @@ interface CategoryResultProps {
   keyword: string;
   setKeyword: React.Dispatch<React.SetStateAction<string>>;
   getSearchResult: () => Promise<void>;
+  startLoading: () => void;
 }
 
 export const CategoryResult: React.FC<CategoryResultProps> = ({
@@ -23,6 +24,7 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
   keyword,
   setKeyword,
   getSearchResult,
+  startLoading,
 }) => {
   let history = useHistory();
 
@@ -113,7 +115,11 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
           <div className="categories-header container">
             <div className="category-main-text">
               <h3>APIs related to {categoryName}</h3>
-              <Link to="/api-results" className="all-link">
+              <Link
+                to="/api-results"
+                className="all-link"
+                onClick={() => startLoading()}
+              >
                 List all categories instead
               </Link>
             </div>

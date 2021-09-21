@@ -155,7 +155,11 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
           ) : (
             <div>lol</div>
           )}
-          <button onClick={() => setShowNumber(showNumber + 33)}>
+          <button
+            onClick={() => {
+              setShowNumber(showNumber + 33);
+            }}
+          >
             Show More
           </button>
         </>

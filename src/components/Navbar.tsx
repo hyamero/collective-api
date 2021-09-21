@@ -1,28 +1,33 @@
 /** @jsx jsx */
 import { css, jsx, Global } from "@emotion/react";
-import React from "react";
+import React, { ReactInstance } from "react";
 import { Link } from "react-router-dom";
 
 interface NavbarProps {
   scroll: boolean;
+  startLoading: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ scroll }) => {
+export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
   return (
-    <nav className={`${scroll ? "nav-scroll" : "Navbar"}`} css={css``}>
+    <nav className={`${scroll ? "nav-scroll" : "Navbar"}`}>
       <div className="container" css={css``}>
         <Link to="/" className="logo">
           <h1>💡 Collective APIs</h1>
         </Link>
         <div className="btns-navbar">
           <Link className="btn-nav" to="/">
-            Home
-          </Link>
-          <Link className="btn-nav" to="/information">
             Information
           </Link>
-          <Link className="btn-nav" to="/api-results">
-            Find APIs
+          <Link className="btn-nav" to="/category">
+            Categories
+          </Link>
+          <Link
+            className="btn-nav"
+            to="/api-results"
+            onClick={() => startLoading()}
+          >
+            Public APIs
           </Link>
         </div>
         <a

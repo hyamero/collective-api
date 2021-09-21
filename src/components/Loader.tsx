@@ -131,39 +131,39 @@ export const Loader: React.FC<LoaderProps> = ({}) => {
                   }
 
                   &:nth-child(2)::before {
-                    animation-delay: 0.2s;
+                    animation-delay: 0.1s;
                   }
 
                   &:nth-child(3)::before {
-                    animation-delay: 0.4s;
+                    animation-delay: 0.2s;
                   }
 
                   &:nth-child(4)::before {
-                    animation-delay: 0.6s;
+                    animation-delay: 0.3s;
                   }
 
                   &:nth-child(5)::before {
-                    animation-delay: 0.8s;
+                    animation-delay: 0.4s;
                   }
 
                   &:nth-child(6)::before {
-                    animation-delay: 1s;
+                    animation-delay: 0.5s;
                   }
 
                   &:nth-child(7)::before {
-                    animation-delay: 1.2s;
+                    animation-delay: 0.6s;
                   }
 
                   &:nth-child(8)::before {
-                    animation-delay: 1.4s;
+                    animation-delay: 0.7s;
                   }
 
                   &:nth-child(9)::before {
-                    animation-delay: 1.6s;
+                    animation-delay: 0.8s;
                   }
 
                   &:nth-child(10)::before {
-                    animation-delay: 1.8s;
+                    animation-delay: 0.9s;
                   }
                 }
               }

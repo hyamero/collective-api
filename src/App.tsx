@@ -36,7 +36,7 @@ function App() {
     setTimeout(() => {
       setLoading(false);
       console.log("timer stopped");
-    }, 2200);
+    }, 1700);
   };
 
   const getAllEntries = async () => {
@@ -139,7 +139,7 @@ function App() {
           }
         `}
       >
-        <Navbar scroll={scroll} />
+        <Navbar scroll={scroll} startLoading={startLoading} />
         {scroll && (
           <RiArrowUpSFill
             className="icon-up"
@@ -190,6 +190,7 @@ function App() {
                 keyword={keyword}
                 setKeyword={setKeyword}
                 getSearchResult={getSearchResult}
+                startLoading={startLoading}
               />
             )}
           />
