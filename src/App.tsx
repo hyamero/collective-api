@@ -206,6 +206,7 @@ function App() {
                 searchResult={searchResult}
                 loading={loading}
                 keyword={keyword}
+                startLoading={startLoading}
               />
             )}
           />

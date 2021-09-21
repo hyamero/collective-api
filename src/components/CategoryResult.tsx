@@ -49,27 +49,41 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
 
         .categories-header {
           display: flex;
-          justify-content: space-between;
+          flex-direction: column;
           align-items: center;
           margin-bottom: 15px;
           width: 100vw;
           padding: 0 50px;
           margin-bottom: 70px;
 
+          .all-link {
+            font-size: 0.9rem;
+            z-index: 2;
+
+            a {
+              color: #8e4ae3;
+            }
+
+            .link-public::after {
+              content: "";
+              width: 2px;
+              height: 15px;
+              background: #8e4ae3;
+              display: inline-block;
+              position: relative;
+              top: 3px;
+              margin: 0 10px;
+            }
+          }
+
           .category-main-text {
             margin: 0 40px;
+            position: relative;
+            z-index: 2;
 
             h3 {
               font-size: 1.8rem;
               color: #280d4a;
-            }
-
-            .all-link {
-              font-size: 1rem;
-              color: #8e4ae3;
-              position: relative;
-              bottom: 10px;
-              border-bottom: 1px #8e4ae3 solid;
             }
           }
 
@@ -86,6 +100,7 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
               font-size: 0.9rem;
               padding: 0 10px;
               position: relative;
+              left: 0.9rem;
               z-index: 2;
               background: #ffffff;
             }
@@ -93,7 +108,7 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
             .icon-search-container {
               background: #ffffff;
               position: absolute;
-              left: -1.8rem;
+              left: -0.9rem;
               bottom: 0;
               height: 2.2rem;
               width: 30px;
@@ -118,13 +133,6 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
           <div className="categories-header">
             <div className="category-main-text">
               <h3>APIs related to {categoryName}</h3>
-              <Link
-                to="/api-results"
-                className="all-link"
-                onClick={() => startLoading()}
-              >
-                List all categories instead
-              </Link>
             </div>
             <div className="searchbar">
               <form
@@ -143,6 +151,18 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
               <div className="icon-search-container">
                 <FiSearch className="icon-search" />
               </div>
+            </div>
+            <div className="all-link">
+              <Link
+                to="/api-results"
+                onClick={() => startLoading()}
+                className="link-public"
+              >
+                List all Public APIs
+              </Link>
+              <Link to="/category" className="link-category">
+                Change Category
+              </Link>
             </div>
           </div>
           {typeof categoryData !== "undefined" && categoryData !== null ? (

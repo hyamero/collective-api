@@ -30,6 +30,7 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
     <div
       css={css`
         width: 100vw;
+        min-height: 100vh;
         top: 0;
         padding: 50px;
         position: absolute;
@@ -47,10 +48,17 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
 
         .categories-header {
           display: flex;
+          flex-direction: column;
+          justify-content: center;
           align-items: center;
-          justify-content: space-between;
-          margin-bottom: 70px;
+          margin-bottom: 50px;
           width: 100vw;
+
+          .all-link {
+            font-size: 1rem;
+            color: #8e4ae3;
+            border-bottom: 1px #8e4ae3 solid;
+          }
 
           .category-main-text {
             margin: 0 40px;
@@ -58,14 +66,6 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
             h3 {
               font-size: 1.8rem;
               color: #280d4a;
-            }
-
-            .all-link {
-              font-size: 1rem;
-              color: #8e4ae3;
-              position: relative;
-              bottom: 10px;
-              border-bottom: 1px #8e4ae3 solid;
             }
           }
 
@@ -124,10 +124,7 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
         <>
           <div className="categories-header container">
             <div className="category-main-text">
-              <h3>All APIs</h3>
-              <Link to="/api-results" className="all-link">
-                List all categories instead
-              </Link>
+              <h3>Public APIs</h3>
             </div>
             <div className="searchbar">
               <form
@@ -147,6 +144,9 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
                 <FiSearch className="icon-search" />
               </div>
             </div>
+            <Link to="/category" className="all-link">
+              Select a Category
+            </Link>
           </div>
           {typeof allEntries !== "undefined" ? (
             allEntries.slice(0, showNumber).map((entry: any) => (
