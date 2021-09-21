@@ -142,6 +142,7 @@ function App() {
         `}
       >
         <Navbar scroll={scroll} startLoading={startLoading} />
+
         {scroll && (
           <RiArrowUpSFill
             className="icon-up"

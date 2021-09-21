@@ -6,6 +6,7 @@ import { Redirect } from "react-router";
 import { FiExternalLink } from "react-icons/fi";
 import { Link, useHistory } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
+import doodle3 from "../img/doodle-7.png";
 // import "aos/dist/aos.css";
 
 interface CategoryResultProps {
@@ -127,10 +128,17 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
             }
           }
         }
+        .doodle3 {
+          position: absolute;
+          left: 0;
+          top: 2rem;
+          height: 250px;
+        }
       `}
     >
       {!loading && (
         <>
+          <img src={doodle3} alt="doodle3" className="doodle3" />
           <div className="categories-header">
             <div className="category-main-text">
               <h3>APIs related to {categoryName}</h3>

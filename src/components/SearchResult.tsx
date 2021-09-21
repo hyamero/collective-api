@@ -5,6 +5,7 @@ import React from "react";
 import { FiExternalLink } from "react-icons/fi";
 import { Link, useHistory } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
+import doodle3 from "../img/doodle-7.png";
 
 interface SearchResultProps {
   searchResult: any;
@@ -127,10 +128,17 @@ export const SearchResult: React.FC<SearchResultProps> = ({
         .no-match {
           width: 100vw;
         }
+        .doodle3 {
+          position: absolute;
+          left: 0;
+          top: 2rem;
+          height: 250px;
+        }
       `}
     >
       {!loading && (
         <>
+          <img src={doodle3} alt="doodle3" className="doodle3" />
           <div className="categories-header container">
             <div className="category-main-text">
               <h3>APIs related to {keyword}</h3>

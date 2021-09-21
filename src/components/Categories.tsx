@@ -6,6 +6,7 @@ import axios from "axios";
 
 import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
+import doodle3 from "../img/doodle-7.png";
 
 interface CategoriesProps {
   categories: any;
@@ -126,8 +127,16 @@ export const Categories: React.FC<CategoriesProps> = ({
         .categories-container .smol {
           font-size: 0.7rem;
         }
+
+        .doodle3 {
+          position: absolute;
+          left: 0;
+          top: 2rem;
+          height: 220px;
+        }
       `}
     >
+      <img src={doodle3} alt="doodle3" className="doodle3" />
       <div
         className="wrapper"
         css={css`

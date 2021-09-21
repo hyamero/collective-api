@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { FiExternalLink } from "react-icons/fi";
 import { Link, useHistory } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
+import doodle3 from "../img/doodle-7.png";
 // import "aos/dist/aos.css";
 
 interface AllEntriesProps {
@@ -124,10 +125,19 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
           margin: auto;
           bottom: 1.4rem;
         }
+
+        .doodle3 {
+          position: absolute;
+          left: 0;
+          top: 2rem;
+          height: 250px;
+        }
       `}
     >
       {!loading && (
         <>
+          <img src={doodle3} alt="doodle3" className="doodle3" />
+
           <div className="categories-header container">
             <div className="category-main-text">
               <h3>Public APIs</h3>
