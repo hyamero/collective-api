@@ -48,6 +48,7 @@ export const Categories: React.FC<CategoriesProps> = ({
           align-items: center;
           margin-bottom: 15px;
           overflow-x: hidden;
+          padding: 0 50px;
 
           .category-main-text {
             margin: 0 40px;

@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import { FiExternalLink } from "react-icons/fi";
 import { Link, useHistory } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
+import "aos/dist/aos.css";
 
 interface AllEntriesProps {
   allEntries: any;
@@ -48,7 +49,7 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-bottom: 15px;
+          margin-bottom: 70px;
           width: 100vw;
 
           .category-main-text {
@@ -148,7 +149,11 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
           </div>
           {typeof allEntries !== "undefined" ? (
             allEntries.slice(0, showNumber).map((entry: any) => (
-              <div key={entry.Link} className="category-data-container">
+              <div
+                key={entry.Link}
+                className="category-data-container"
+                data-aos="fade-up"
+              >
                 <CategoryEntry entry={entry} />
               </div>
             ))

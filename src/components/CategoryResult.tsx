@@ -6,6 +6,7 @@ import { Redirect } from "react-router";
 import { FiExternalLink } from "react-icons/fi";
 import { Link, useHistory } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
+import "aos/dist/aos.css";
 
 interface CategoryResultProps {
   categoryData: any;
@@ -52,6 +53,8 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
           align-items: center;
           margin-bottom: 15px;
           width: 100vw;
+          padding: 0 50px;
+          margin-bottom: 70px;
 
           .category-main-text {
             margin: 0 40px;
@@ -112,7 +115,7 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
     >
       {!loading && (
         <>
-          <div className="categories-header container">
+          <div className="categories-header">
             <div className="category-main-text">
               <h3>APIs related to {categoryName}</h3>
               <Link
@@ -144,7 +147,11 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
           </div>
           {typeof categoryData !== "undefined" && categoryData !== null ? (
             categoryData.map((entry: any) => (
-              <div key={entry.Link} className="category-data-container">
+              <div
+                key={entry.Link}
+                className="category-data-container"
+                data-aos="fade-up"
+              >
                 <CategoryEntry entry={entry} />
               </div>
             ))

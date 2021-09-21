@@ -9,6 +9,8 @@ import {
 } from "react-router-dom";
 import axios from "axios";
 import "css-maid";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import { RiArrowUpSFill } from "react-icons/ri";
 
 //components
@@ -29,6 +31,7 @@ function App() {
     getCategories();
     getAllEntries();
     startLoading();
+    Aos.init({});
   }, []);
 
   const startLoading = () => {
