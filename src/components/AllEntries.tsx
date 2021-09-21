@@ -47,8 +47,8 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
 
         .categories-header {
           display: flex;
-          justify-content: space-between;
           align-items: center;
+          justify-content: space-between;
           margin-bottom: 70px;
           width: 100vw;
 
@@ -83,6 +83,7 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
               font-size: 0.9rem;
               padding: 0 10px;
               position: relative;
+              left: 0.9rem;
               z-index: 2;
               background: #ffffff;
             }
@@ -90,7 +91,7 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
             .icon-search-container {
               background: #ffffff;
               position: absolute;
-              left: -1.8rem;
+              left: -0.9rem;
               bottom: 0;
               height: 2.2rem;
               width: 30px;
@@ -149,13 +150,15 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
           </div>
           {typeof allEntries !== "undefined" ? (
             allEntries.slice(0, showNumber).map((entry: any) => (
-              <div
+              <a
+                href={entry.Link}
+                target="_blank"
                 key={entry.Link}
                 className="category-data-container"
                 data-aos="fade-up"
               >
                 <CategoryEntry entry={entry} />
-              </div>
+              </a>
             ))
           ) : (
             <div>lol</div>
@@ -187,6 +190,30 @@ export const CategoryEntry: React.FC<CategoryEntryProps> = ({ entry }) => {
         border-radius: 25px;
         background: #fff;
         box-shadow: 1px 1px 4px #e0e0e0;
+        position: relative;
+        cursor: pointer;
+        transition: 0.2s linear;
+
+        &:hover {
+          &::after {
+            content: "VISIT";
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            font-style: italic;
+            color: #404040;
+
+            width: 350px;
+            height: 90px;
+            padding: 25px 30px;
+            border-radius: 25px;
+            background: rgba(164, 21, 255, 0.2);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
 
         .api-title-category {
           display: flex;
