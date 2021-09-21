@@ -12,7 +12,7 @@ export const Loader: React.FC<LoaderProps> = ({}) => {
           &.preloader {
             display: flex;
             position: fixed;
-            top: 0;
+            top: -4rem;
             left: 0;
             width: 100%;
             height: 100%;
@@ -73,7 +73,7 @@ export const Loader: React.FC<LoaderProps> = ({}) => {
                   height: 100%;
                   justify-content: center;
                   align-items: center;
-                  background: #fff;
+                  background: #f0f0f2;
                   z-index: 999;
                   & .loader-p {
                     position: relative;

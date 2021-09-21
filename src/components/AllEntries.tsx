@@ -117,6 +117,8 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
           border: none;
           border-radius: 50px;
           cursor: pointer;
+          height: 35px;
+          position: absolute;
         }
       `}
     >
@@ -148,21 +150,19 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
               Select a Category
             </Link>
           </div>
-          {typeof allEntries !== "undefined" ? (
-            allEntries.slice(0, showNumber).map((entry: any) => (
-              <a
-                href={entry.Link}
-                target="_blank"
-                key={entry.Link}
-                className="category-data-container"
-                data-aos="fade-up"
-              >
-                <CategoryEntry entry={entry} />
-              </a>
-            ))
-          ) : (
-            <div>lol</div>
-          )}
+          {typeof allEntries !== "undefined"
+            ? allEntries.slice(0, showNumber).map((entry: any) => (
+                <a
+                  href={entry.Link}
+                  target="_blank"
+                  key={entry.Link}
+                  className="category-data-container"
+                  data-aos="fade-up"
+                >
+                  <CategoryEntry entry={entry} />
+                </a>
+              ))
+            : null}
           <button
             onClick={() => {
               setShowNumber(showNumber + 33);
