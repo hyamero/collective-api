@@ -30,7 +30,6 @@ function App() {
   useEffect(() => {
     getCategories();
     getAllEntries();
-    startLoading();
     // Aos.init({});
   }, []);
 
@@ -179,6 +178,7 @@ function App() {
                 keyword={keyword}
                 setKeyword={setKeyword}
                 getSearchResult={getSearchResult}
+                startLoading={startLoading}
               />
             )}
           />
@@ -207,6 +207,8 @@ function App() {
                 loading={loading}
                 keyword={keyword}
                 startLoading={startLoading}
+                getSearchResult={getSearchResult}
+                setKeyword={setKeyword}
               />
             )}
           />

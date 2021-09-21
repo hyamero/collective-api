@@ -3,7 +3,7 @@
 import { css, jsx } from "@emotion/react";
 import React from "react";
 import { FiExternalLink } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 
 interface SearchResultProps {
@@ -11,6 +11,8 @@ interface SearchResultProps {
   loading: boolean;
   keyword: string;
   startLoading: () => void;
+  getSearchResult: () => void;
+  setKeyword: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const SearchResult: React.FC<SearchResultProps> = ({
@@ -18,7 +20,11 @@ export const SearchResult: React.FC<SearchResultProps> = ({
   loading,
   keyword,
   startLoading,
+  getSearchResult,
+  setKeyword,
 }) => {
+  let history = useHistory();
+
   return (
     <div
       css={css`
@@ -117,6 +123,10 @@ export const SearchResult: React.FC<SearchResultProps> = ({
             }
           }
         }
+
+        .no-match {
+          width: 100vw;
+        }
       `}
     >
       {!loading && (
@@ -126,9 +136,24 @@ export const SearchResult: React.FC<SearchResultProps> = ({
               <h3>APIs related to {keyword}</h3>
             </div>
             <div className="searchbar">
-              <input type="text" placeholder="Search a Category" />
-              <div className="icon-search-container">
-                <FiSearch className="icon-search" />
+              <div className="searchbar">
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    history.push(`/search/${keyword}`);
+                    getSearchResult();
+                    startLoading();
+                  }}
+                >
+                  <input
+                    type="text"
+                    placeholder="Search an API"
+                    onChange={(e) => setKeyword(e.target.value)}
+                  />
+                </form>
+                <div className="icon-search-container">
+                  <FiSearch className="icon-search" />
+                </div>
               </div>
             </div>
             <div className="all-link">
@@ -151,7 +176,7 @@ export const SearchResult: React.FC<SearchResultProps> = ({
               </div>
             ))
           ) : (
-            <div className="no-match">no match found</div>
+            <div className="no-match">No APIs found</div>
           )}
         </>
       )}

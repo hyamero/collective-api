@@ -33,6 +33,7 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
     <div
       css={css`
         width: 100vw;
+        min-height: 100vh;
         top: 0;
         padding: 50px;
         position: absolute;
@@ -140,6 +141,7 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
                   e.preventDefault();
                   history.push(`/search/${keyword}`);
                   getSearchResult();
+                  startLoading();
                 }}
               >
                 <input

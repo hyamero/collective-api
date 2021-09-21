@@ -13,6 +13,7 @@ interface AllEntriesProps {
   keyword: string;
   setKeyword: React.Dispatch<React.SetStateAction<string>>;
   getSearchResult: () => Promise<void>;
+  startLoading: () => void;
 }
 
 export const AllEntries: React.FC<AllEntriesProps> = ({
@@ -21,6 +22,7 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
   keyword,
   setKeyword,
   getSearchResult,
+  startLoading,
 }) => {
   const [showNumber, setShowNumber] = useState<number>(33);
 
@@ -136,6 +138,7 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
                   e.preventDefault();
                   history.push(`/search/${keyword}`);
                   getSearchResult();
+                  startLoading();
                 }}
               >
                 <input
