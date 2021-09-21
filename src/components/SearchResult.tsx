@@ -198,6 +198,27 @@ export const CategoryEntry: React.FC<CategoryEntryProps> = ({ entry }) => {
         border-radius: 25px;
         background: #fff;
         box-shadow: 1px 1px 4px #e0e0e0;
+        position: relative;
+        cursor: pointer;
+        transition: 0.2s linear;
+
+        &:hover {
+          &::after {
+            content: "👆";
+            text-align: center;
+            font-size: 2rem;
+
+            width: 350px;
+            height: 90px;
+            padding: 25px 30px;
+            border-radius: 25px;
+            background: rgba(164, 21, 255, 0.2);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
 
         .api-title-category {
           display: flex;

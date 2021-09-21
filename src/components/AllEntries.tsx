@@ -201,12 +201,9 @@ export const CategoryEntry: React.FC<CategoryEntryProps> = ({ entry }) => {
 
         &:hover {
           &::after {
-            content: "VISIT";
+            content: "👆";
             text-align: center;
-            font-size: 3rem;
-            font-weight: 700;
-            font-style: italic;
-            color: #404040;
+            font-size: 2rem;
 
             width: 350px;
             height: 90px;
