@@ -75,13 +75,12 @@ export const Styles: React.FC<StylesProps> = ({}) => {
             background: #f0f0f2;
             display: flex;
             justify-content: center;
-            align-items: center;
             flex-wrap: wrap;
             overflow-x: hidden;
             padding-top: 150px;
             max-width: 1920px;
             margin: auto;
-            position: relative;
+            position: absolute;
 
             .category-data-container {
               margin: 20px;

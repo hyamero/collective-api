@@ -73,7 +73,7 @@ export const Loader: React.FC<LoaderProps> = ({}) => {
                   height: 100%;
                   justify-content: center;
                   align-items: center;
-                  background: #f0f0f2;
+                  background: transparent;
                   z-index: 999;
                   & .loader-p {
                     position: relative;

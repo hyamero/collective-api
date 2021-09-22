@@ -31,7 +31,6 @@ function App() {
   useEffect(() => {
     getCategories();
     getAllEntries();
-    startLoading();
     // Aos.init({});
   }, []);
 
@@ -120,13 +119,6 @@ function App() {
           height: 100vh;
           overflow-x: hidden;
           z-index: 1;
-
-          .up-ref {
-            width: 20px;
-            height: 20px;
-            position: absolute;
-            top: 0;
-          }
 
           .icon-up {
             color: #000;
