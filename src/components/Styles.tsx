@@ -184,23 +184,31 @@ export const Styles: React.FC<StylesProps> = ({}) => {
             box-shadow: 1px 1px 4px #e0e0e0;
             position: relative;
             cursor: pointer;
-            transition: 0.2s linear;
+
+            &::after {
+              content: "👆";
+              text-align: center;
+              font-size: 2rem;
+
+              width: 350px;
+              height: 90px;
+              padding: 25px 30px;
+              border-radius: 25px;
+              background: rgba(164, 21, 255, 0.2);
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              transition: 0.3s linear;
+              display: flex;
+              justify-content: flex-start;
+              flex-direction: column;
+              opacity: 0;
+            }
 
             &:hover {
               &::after {
-                content: "👆";
-                text-align: center;
-                font-size: 2rem;
-
-                width: 350px;
-                height: 90px;
-                padding: 25px 30px;
-                border-radius: 25px;
-                background: rgba(164, 21, 255, 0.2);
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+                opacity: 1;
               }
             }
 
