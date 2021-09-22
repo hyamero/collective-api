@@ -78,9 +78,15 @@ export const SearchResult: React.FC<SearchResultProps> = ({
           </div>
           {typeof searchResult !== "undefined" && searchResult !== null ? (
             searchResult.map((entry: any) => (
-              <div key={entry.Link} className="category-data-container">
+              <a
+                href={entry.Link}
+                target="_blank"
+                key={entry.Link}
+                className="category-data-container"
+                // data-aos="fade-up"
+              >
                 <CategoryEntry entry={entry} />
-              </div>
+              </a>
             ))
           ) : (
             <div className="no-match">No APIs found</div>

@@ -73,13 +73,15 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
           </div>
           {typeof categoryData !== "undefined" && categoryData !== null ? (
             categoryData.map((entry: any) => (
-              <div
+              <a
+                href={entry.Link}
+                target="_blank"
                 key={entry.Link}
                 className="category-data-container"
                 // data-aos="fade-up"
               >
                 <CategoryEntry entry={entry} />
-              </div>
+              </a>
             ))
           ) : (
             <Redirect to="/api-results" />
