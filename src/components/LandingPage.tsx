@@ -17,8 +17,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
     <header
       className="LandingPage"
       css={css`
-        width: 100vw;
         height: 100vh;
+        width: 100vw;
         position: absolute;
         top: 0;
         right: 0;

@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import axios from "axios";
 import "css-maid";
+import { Styles } from "./components/Styles";
 // import Aos from "aos";
 // import "aos/dist/aos.css";
 import { RiArrowUpSFill } from "react-icons/ri";
@@ -30,6 +31,7 @@ function App() {
   useEffect(() => {
     getCategories();
     getAllEntries();
+    startLoading();
     // Aos.init({});
   }, []);
 
@@ -214,62 +216,8 @@ function App() {
             )}
           />
         </Switch>
-        <Global
-          styles={css`
-            @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
-
-            * {
-              margin: none;
-              padding: none;
-              box-sizing: border-box;
-              font-family: "Poppins", sans-serif;
-            }
-
-            body,
-            html {
-              overflow-x: hidden;
-              scroll-behavior: smooth;
-            }
-
-            ::selection {
-              background: rgba(180, 61, 255, 0.5);
-              color: #1b1b1b;
-            }
-
-            ::-webkit-scrollbar {
-              width: 4px;
-              height: 4px;
-              border: 1px solid #d5d5d5;
-            }
-
-            ::-webkit-scrollbar-track {
-              border-radius: 30px;
-              background: #fff;
-            }
-
-            ::-webkit-scrollbar-thumb {
-              border-radius: 30px;
-              background: #7d2ab2;
-            }
-
-            .api-card {
-              width: 350px;
-            }
-
-            .container {
-              width: 69%;
-              max-width: 1280px;
-              margin: auto;
-            }
-
-            .container-big {
-              width: 80%;
-              max-width: 1280px;
-              margin: auto;
-            }
-          `}
-        />
       </div>
+      <Styles />
     </Router>
   );
 }
