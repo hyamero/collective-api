@@ -6,6 +6,7 @@ import { FiExternalLink } from "react-icons/fi";
 import { Link, useHistory } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import doodle3 from "../img/doodle-7.png";
+import Saly41 from "../img/Saly-41.png";
 
 interface SearchResultProps {
   searchResult: any;
@@ -31,7 +32,23 @@ export const SearchResult: React.FC<SearchResultProps> = ({
       className="CardSection"
       css={css`
         .no-match {
-          width: 100vw;
+          width: 80vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          background: #fff;
+          border-radius: 50%;
+          padding: 50px;
+
+          h3 {
+            font-size: 3rem;
+            font-weight: 600;
+          }
+
+          img {
+            height: 600px;
+          }
         }
       `}
     >
@@ -54,6 +71,7 @@ export const SearchResult: React.FC<SearchResultProps> = ({
                 >
                   <input
                     type="text"
+                    maxLength={25}
                     placeholder="Search an API"
                     onChange={(e) => setKeyword(e.target.value)}
                   />
@@ -89,7 +107,11 @@ export const SearchResult: React.FC<SearchResultProps> = ({
               </a>
             ))
           ) : (
-            <div className="no-match">No APIs found</div>
+            <div className="no-match">
+              <h3>no match was found...</h3>
+              <img src={Saly41} alt="person render" />
+              <h4>there's nothing in here...</h4>
+            </div>
           )}
         </>
       )}
