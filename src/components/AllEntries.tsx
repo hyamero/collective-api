@@ -66,6 +66,7 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
               >
                 <input
                   type="text"
+                  maxLength={25}
                   placeholder="Search an API"
                   onChange={(e) => setKeyword(e.target.value)}
                 />

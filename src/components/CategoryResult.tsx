@@ -50,6 +50,7 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
               >
                 <input
                   type="text"
+                  maxLength={25}
                   placeholder="Search an API"
                   onChange={(e) => setKeyword(e.target.value)}
                 />

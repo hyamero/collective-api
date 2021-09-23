@@ -156,6 +156,7 @@ export const Categories: React.FC<CategoriesProps> = ({
           <div className="searchbar">
             <input
               type="text"
+              maxLength={25}
               placeholder="Search a Category"
               onChange={(e) => setCategoryFilter(e.target.value)}
             />

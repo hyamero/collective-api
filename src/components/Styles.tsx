@@ -96,6 +96,11 @@ export const Styles: React.FC<StylesProps> = ({}) => {
               margin-bottom: 70px;
               color: #280d4a;
 
+              h3 {
+                max-width: 394px;
+                text-align: center;
+              }
+
               a.all-link,
               a.link-public,
               a.link-category {
