@@ -22,6 +22,7 @@ import { CategoryResult } from "./components/CategoryResult";
 import { SearchResult } from "./components/SearchResult";
 import { AllEntries } from "./components/AllEntries";
 import { Loader } from "./components/Loader";
+import { Information } from "./components/Information";
 
 function App() {
   const [allEntries, setAllEntries] = useState<any>();
@@ -212,6 +213,8 @@ function App() {
               />
             )}
           />
+
+          <Route exact path="/information" component={Information} />
         </Switch>
       </div>
       <Styles />

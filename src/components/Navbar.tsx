@@ -16,7 +16,7 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
           <h1>💡 Collective APIs</h1>
         </Link>
         <div className="btns-navbar">
-          <Link className="btn-nav" to="/">
+          <Link className="btn-nav" to="/information">
             Information
           </Link>
           <Link className="btn-nav" to="/category">
