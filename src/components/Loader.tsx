@@ -116,7 +116,7 @@ export const Loader: React.FC<LoaderProps> = ({}) => {
 
                 & .letters-loading {
                   position: relative;
-                  color: rgba(0, 0, 0, 0.2);
+                  color: rgba(40, 13, 74, 0.2);
 
                   &::before {
                     position: absolute;
@@ -125,7 +125,7 @@ export const Loader: React.FC<LoaderProps> = ({}) => {
                     left: 0;
                     top: -3px;
                     opacity: 0;
-                    color: #000000;
+                    color: #280d4a;
                     transform: rotateY(-90deg);
                     animation: letters-loading 4s infinite;
                   }

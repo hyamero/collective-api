@@ -94,6 +94,7 @@ export const Styles: React.FC<StylesProps> = ({}) => {
               width: 100vw;
               padding: 0 50px;
               margin-bottom: 70px;
+              color: #280d4a;
 
               a.all-link,
               a.link-public,
@@ -101,6 +102,10 @@ export const Styles: React.FC<StylesProps> = ({}) => {
                 font-size: 0.9rem;
                 z-index: 2;
                 color: #8e4ae3;
+
+                &:hover {
+                  color: #b653ff;
+                }
               }
 
               a.link-public::after {
@@ -183,14 +188,14 @@ export const Styles: React.FC<StylesProps> = ({}) => {
             box-shadow: 1px 1px 4px #e0e0e0;
             position: relative;
             cursor: pointer;
+            overflow: hidden;
 
             &::after {
               content: "👆";
-              text-align: center;
               font-size: 2rem;
 
               width: 350px;
-              height: 90px;
+              height: 280px;
               padding: 25px 30px;
               border-radius: 25px;
               background: rgba(164, 21, 255, 0.2);
@@ -200,14 +205,16 @@ export const Styles: React.FC<StylesProps> = ({}) => {
               transform: translate(-50%, -50%);
               transition: 0.3s linear;
               display: flex;
-              justify-content: flex-start;
-              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              height: 0;
               opacity: 0;
             }
 
             &:hover {
               &::after {
                 opacity: 1;
+                height: 280px;
               }
             }
 

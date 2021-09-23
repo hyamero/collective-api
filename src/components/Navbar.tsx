@@ -87,6 +87,7 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
 
           .nav-scroll {
             background: rgba(180, 61, 255, 0.5);
+            background: #d695ff;
             height: 80px;
             margin-bottom: 25px;
             position: fixed;

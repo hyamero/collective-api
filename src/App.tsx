@@ -132,6 +132,11 @@ function App() {
             border-radius: 50%;
             transition: linear 0.3s;
             z-index: 3;
+            cursor: pointer;
+
+            &:hover {
+              transform: scale(1.03);
+            }
           }
         `}
       >

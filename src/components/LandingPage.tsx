@@ -57,6 +57,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
             color: #956bcb;
           }
 
+          a.public-apis:hover {
+            color: #b33cff;
+          }
+
           h1 {
             font-size: 3.5rem;
             line-height: 3.7rem;
@@ -86,7 +90,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
       <div className="hero-container">
         <p>
           ⚡ POWERED BY{" "}
-          <a href="https://github.com/public-apis/public-apis" target="_blank">
+          <a
+            href="https://github.com/public-apis/public-apis"
+            target="_blank"
+            className="public-apis"
+          >
             PUBLIC APIS
           </a>{" "}
         </p>
