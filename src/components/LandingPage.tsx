@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import renderPerson from "../img/Saly-19.png";
 import doodle from "../img/doodle-5.png";
 import doodle1 from "../img/doodle-7.png";
-import background from "../img/Background.jpg";
+import background from "../img/Background.png";
 
 interface LandingPageProps {
   loading: boolean;
