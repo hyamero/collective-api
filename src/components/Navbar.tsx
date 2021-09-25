@@ -32,20 +32,31 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
         onClick={() => setMenuOpen(!menuOpen)}
       />
       <div className="container" css={css``}>
-        <Link to="/" className="logo">
+        <Link to="/" className="logo" onClick={() => setMenuOpen(false)}>
           <h1>💡 Collective APIs</h1>
         </Link>
         <div className="btns-navbar">
-          <Link className="btn-nav" to="/information">
+          <Link
+            className="btn-nav"
+            to="/information"
+            onClick={() => setMenuOpen(false)}
+          >
             Information
           </Link>
-          <Link className="btn-nav" to="/category">
+          <Link
+            className="btn-nav"
+            to="/category"
+            onClick={() => setMenuOpen(false)}
+          >
             Categories
           </Link>
           <Link
             className="btn-nav"
             to="/api-results"
-            onClick={() => startLoading()}
+            onClick={() => {
+              startLoading();
+              setMenuOpen(false);
+            }}
           >
             Public APIs
           </Link>
@@ -183,7 +194,7 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
           .nav-mobile {
             height: 70vh;
             width: 100vw;
-            background: rgba(180, 61, 255, 0.5);
+            background: #d894ff;
             margin-bottom: 25px;
             position: fixed;
             z-index: 3;
@@ -202,10 +213,15 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
               display: block;
               margin: auto;
               margin: 25px 0;
-              background: #d695ff;
               padding-left: 15px;
               border-radius: 10px;
               color: #280d4a;
+              transition: 0.3s ease-out;
+
+              &:hover {
+                color: #59337e;
+                transform: scale(0.96);
+              }
             }
 
             .link-github {
@@ -247,7 +263,7 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
           }
 
           .icon-menu {
-            background: #d297f9;
+            background: #d894ff;
             height: 35px;
             width: 35px;
             position: absolute;
@@ -260,6 +276,11 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
             align-items: center;
             cursor: pointer;
             display: none;
+            transition: 0.3s ease-out;
+
+            &:hover {
+              transform: scale(0.96);
+            }
 
             ${mq[2]} {
               display: block;

@@ -158,6 +158,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
           ${mq[2]} {
             left: 0;
             top: 3rem;
+            height: 470px;
           }
 
           ${mq[1]} {
