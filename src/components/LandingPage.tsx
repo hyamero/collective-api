@@ -8,6 +8,8 @@ import doodle from "../img/doodle-5.png";
 import doodle1 from "../img/doodle-7.png";
 import background from "../img/Background.png";
 
+import mq from "../config/MqBreakpoints";
+
 interface LandingPageProps {
   loading: boolean;
 }
@@ -29,6 +31,16 @@ export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
         background: url(${background});
         background-size: cover;
 
+        ${mq[2]} {
+          display: flex;
+          flex-direction: column;
+
+          .doodle,
+          .doodle1 {
+            display: none;
+          }
+        }
+
         * {
           margin: auto;
         }
@@ -49,6 +61,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
 
         .hero-container {
           grid-column: 2/4;
+          z-index: 2;
+
+          ${mq[2]} {
+            text-align: center;
+            position: relative;
+            top: 10rem;
+          }
 
           p,
           p a {
@@ -66,6 +85,17 @@ export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
             line-height: 3.7rem;
             color: #280d4a;
             margin-bottom: 30px;
+            white-space: nowrap;
+
+            ${mq[3]} {
+              font-size: 3.1rem;
+              line-height: 3.2rem;
+            }
+
+            ${mq[1]} {
+              font-size: 2.6rem;
+              line-height: 2.6rem;
+            }
           }
 
           .btn-main {
@@ -82,6 +112,25 @@ export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
           height: 600px;
           position: relative;
           top: 4.5rem;
+
+          ${mq[4]} {
+            left: 4rem;
+            top: 5.3rem;
+          }
+
+          ${mq[3]} {
+            height: 550px;
+            left: 7rem;
+          }
+
+          ${mq[2]} {
+            left: 0;
+            top: 4.5rem;
+          }
+
+          ${mq[2]} {
+            height: 490px;
+          }
         }
       `}
     >
