@@ -1,7 +1,10 @@
 /** @jsx jsx */
 import { css, jsx, Global } from "@emotion/react";
-import React, { ReactInstance } from "react";
+import React, { ReactInstance, useState } from "react";
 import { Link } from "react-router-dom";
+import mq from "../config/MqBreakpoints";
+
+import { HiMenuAlt3 } from "react-icons/hi";
 
 interface NavbarProps {
   scroll: boolean;
@@ -9,8 +12,25 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+
   return (
-    <nav className={`${scroll ? "nav-scroll" : "Navbar"}`}>
+    <nav
+      className={`${
+        scroll && menuOpen
+          ? "nav-mobile"
+          : scroll
+          ? "nav-scroll"
+          : menuOpen
+          ? "nav-mobile"
+          : "Navbar"
+      }`}
+      onMouseLeave={() => setMenuOpen(false)}
+    >
+      <HiMenuAlt3
+        className="icon-menu"
+        onClick={() => setMenuOpen(!menuOpen)}
+      />
       <div className="container" css={css``}>
         <Link to="/" className="logo">
           <h1>💡 Collective APIs</h1>
@@ -44,8 +64,8 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
           .Navbar {
             height: 100px;
             margin-bottom: 25px;
-            padding-top: 25px;
             position: fixed;
+            right: 0;
             z-index: 3;
             width: 100vw;
             transition: linear 0.3s;
@@ -53,40 +73,15 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            white-space: nowrap;
 
-            .container {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-
-              .btn-nav {
-                padding: 0 60px;
-                font-weight: 600;
-                font-size: 0.8rem;
-                color: #303030;
-              }
-
-              .logo {
-                font-size: 1.2rem;
-                font-weight: 700;
-                color: #280d4a;
-                margin: 0;
-              }
-
-              .link-github {
-                font-size: 0.8rem;
-                font-weight: 700;
-                margin: 0;
-                background: #fff;
-                border-radius: 15px;
-                padding: 10px 30px;
-                box-shadow: 1px 1px 2px #fff;
-              }
+            ${mq[2]} {
+              height: 80px;
+              padding-top: 0;
             }
           }
 
           .nav-scroll {
-            background: rgba(180, 61, 255, 0.5);
             background: #d695ff;
             height: 80px;
             margin-bottom: 25px;
@@ -99,35 +94,108 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
             justify-content: space-between;
             align-items: center;
             border-bottom-right-radius: 100px;
+            white-space: nowrap;
 
-            .container {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
+            ${mq[2]} {
+              border-bottom-right-radius: 0;
+            }
+          }
 
-              .btn-nav {
-                padding: 0 60px;
-                font-weight: 600;
-                font-size: 0.8rem;
-                color: #000;
+          .nav-mobile {
+            height: 70vh;
+            width: 100vw;
+            background: rgba(180, 61, 255, 0.5);
+            margin-bottom: 25px;
+            position: fixed;
+            right: 0;
+            z-index: 3;
+            transition: linear 0.3s;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            white-space: nowrap;
+          }
+
+          .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .btn-nav {
+              padding: 0 60px;
+              font-weight: 600;
+              font-size: 0.8rem;
+              color: #303030;
+
+              ${mq[3]} {
+                padding: 20px;
               }
 
-              .logo {
-                font-size: 1.2rem;
-                font-weight: 700;
-                color: #000;
-                margin: 0;
+              ${mq[2]} {
+                display: none;
+              }
+            }
+
+            .logo {
+              font-size: 1.2rem;
+              font-weight: 700;
+              color: #280d4a;
+              margin: 0;
+
+              ${mq[2]} {
+                position: absolute;
+                margin-left: 91px;
+                left: 0;
+                top: 2rem;
               }
 
-              .link-github {
-                font-size: 0.8rem;
-                font-weight: 700;
-                margin: 0;
-                background: rgba(255, 255, 255, 0.8);
-                border-radius: 15px;
-                padding: 10px 30px;
-                box-shadow: 1px 1px 2px #fff;
+              ${mq[1]} {
+                margin-left: 30px;
               }
+            }
+
+            .link-github {
+              font-size: 0.8rem;
+              font-weight: 700;
+              margin: 0;
+              background: #fff;
+              border-radius: 15px;
+              padding: 10px 30px;
+              box-shadow: 1px 1px 2px #fff;
+
+              ${mq[3]} {
+                font-size: 0.7rem;
+                padding: 10px 20px;
+              }
+
+              ${mq[2]} {
+                display: none;
+              }
+            }
+          }
+
+          .icon-menu {
+            background: #e4ccf5;
+            height: 35px;
+            width: 35px;
+            position: absolute;
+            top: 1.5rem;
+            right: 0;
+            margin-right: 91px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            display: none;
+
+            ${mq[2]} {
+              display: block;
+            }
+
+            ${mq[1]} {
+              margin-right: 30px;
             }
           }
         `}

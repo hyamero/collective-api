@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { css, jsx, Global } from "@emotion/react";
 import React from "react";
+import mq from "./MqBreakpoints";
 
 interface StylesProps {}
 
@@ -54,6 +55,10 @@ export const Styles: React.FC<StylesProps> = ({}) => {
             width: 69%;
             max-width: 1280px;
             margin: auto;
+
+            ${mq[2]} {
+              width: 80%;
+            }
           }
 
           .container-big {
