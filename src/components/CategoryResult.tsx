@@ -6,6 +6,8 @@ import { Redirect } from "react-router";
 import { FiExternalLink } from "react-icons/fi";
 import { Link, useHistory } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
+import { motion } from "framer-motion";
+
 import doodle3 from "../img/doodle-7.png";
 // import "aos/dist/aos.css";
 
@@ -18,6 +20,19 @@ interface CategoryResultProps {
   getSearchResult: () => Promise<void>;
   startLoading: () => void;
 }
+
+const bounce: any = {
+  infinite: {
+    y: ["3%", "-3%"],
+    transition: {
+      y: {
+        duration: 2,
+        yoyo: Infinity,
+        ease: "easeOut",
+      },
+    },
+  },
+};
 
 export const CategoryResult: React.FC<CategoryResultProps> = ({
   categoryData,
@@ -34,7 +49,13 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
     <div className="CardSection" css={css``}>
       {!loading && (
         <>
-          <img src={doodle3} alt="doodle3" className="doodle3" />
+          <motion.img
+            variants={bounce}
+            animate="infinite"
+            src={doodle3}
+            alt="doodle3"
+            className="doodle3"
+          />
           <div className="categories-header">
             <div className="category-main-text">
               <h3>APIs related to {categoryName}</h3>

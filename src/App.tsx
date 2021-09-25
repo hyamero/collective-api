@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import axios from "axios";
 import "css-maid";
-import { Styles } from "./components/Styles";
+import { Styles } from "./config/Styles";
 // import Aos from "aos";
 // import "aos/dist/aos.css";
 import { RiArrowUpSFill } from "react-icons/ri";

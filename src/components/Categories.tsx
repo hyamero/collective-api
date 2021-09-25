@@ -3,6 +3,7 @@
 import { css, jsx } from "@emotion/react";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
@@ -30,6 +31,19 @@ export const Categories: React.FC<CategoriesProps> = ({
       setCategorySearch(true);
     }
   }, [categoryFilter]);
+
+  const bounce: any = {
+    infinite: {
+      y: ["3%", "-3%"],
+      transition: {
+        y: {
+          duration: 2,
+          yoyo: Infinity,
+          ease: "easeOut",
+        },
+      },
+    },
+  };
 
   return (
     <div
@@ -136,7 +150,13 @@ export const Categories: React.FC<CategoriesProps> = ({
         }
       `}
     >
-      <img src={doodle3} alt="doodle3" className="doodle3" />
+      <motion.img
+        variants={bounce}
+        animate="infinite"
+        src={doodle3}
+        alt="doodle3"
+        className="doodle3"
+      />
       <div
         className="wrapper"
         css={css`

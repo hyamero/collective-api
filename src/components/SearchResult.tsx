@@ -5,6 +5,8 @@ import React from "react";
 import { FiExternalLink } from "react-icons/fi";
 import { Link, useHistory } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
+import { motion } from "framer-motion";
+
 import doodle3 from "../img/doodle-7.png";
 import Saly41 from "../img/Saly-41.png";
 
@@ -16,6 +18,19 @@ interface SearchResultProps {
   getSearchResult: () => void;
   setKeyword: React.Dispatch<React.SetStateAction<string>>;
 }
+
+const bounce: any = {
+  infinite: {
+    y: ["3%", "-3%"],
+    transition: {
+      y: {
+        duration: 2,
+        yoyo: Infinity,
+        ease: "easeOut",
+      },
+    },
+  },
+};
 
 export const SearchResult: React.FC<SearchResultProps> = ({
   searchResult,
@@ -54,7 +69,13 @@ export const SearchResult: React.FC<SearchResultProps> = ({
     >
       {!loading && (
         <>
-          <img src={doodle3} alt="doodle3" className="doodle3" />
+          <motion.img
+            variants={bounce}
+            animate="infinite"
+            src={doodle3}
+            alt="doodle3"
+            className="doodle3"
+          />
           <div className="categories-header container">
             <div className="category-main-text">
               <h3>APIs related to {keyword}</h3>

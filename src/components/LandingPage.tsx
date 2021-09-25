@@ -2,6 +2,7 @@
 import { css, jsx } from "@emotion/react";
 import React from "react";
 import { Link } from "react-router-dom";
+import { animate, motion } from "framer-motion";
 
 import renderPerson from "../img/Saly-19.png";
 import doodle from "../img/doodle-5.png";
@@ -9,10 +10,37 @@ import doodle1 from "../img/doodle-7.png";
 import background from "../img/Background.png";
 
 import mq from "../config/MqBreakpoints";
+import { RiLineChartFill } from "react-icons/ri";
 
 interface LandingPageProps {
   loading: boolean;
 }
+
+const bounce: any = {
+  infinite: {
+    y: ["3%", "-3%"],
+    transition: {
+      y: {
+        duration: 1.8,
+        yoyo: Infinity,
+        ease: "easeOut",
+      },
+    },
+  },
+};
+
+const bounceOpp: any = {
+  infinite: {
+    y: ["-3%", "3%"],
+    transition: {
+      y: {
+        duration: 2,
+        yoyo: Infinity,
+        ease: "easeOut",
+      },
+    },
+  },
+};
 
 export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
   return (
@@ -134,8 +162,20 @@ export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
         }
       `}
     >
-      <img className="doodle" src={doodle} alt="doodle" />
-      <img className="doodle1" src={doodle1} alt="doodle1" />
+      <motion.img
+        variants={bounce}
+        animate="infinite"
+        className="doodle"
+        src={doodle}
+        alt="doodle"
+      />
+      <motion.img
+        variants={bounceOpp}
+        animate="infinite"
+        className="doodle1"
+        src={doodle1}
+        alt="doodle1"
+      />
       <div className="hero-container">
         <p>
           ⚡ POWERED BY{" "}
