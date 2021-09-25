@@ -4,9 +4,10 @@ import { css, jsx } from "@emotion/react";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-
 import { Link } from "react-router-dom";
+import mq from "../config/MqBreakpoints";
 import { FiSearch } from "react-icons/fi";
+
 import doodle3 from "../img/doodle-7.png";
 
 interface CategoriesProps {
@@ -65,12 +66,18 @@ export const Categories: React.FC<CategoriesProps> = ({
           overflow-x: hidden;
           padding: 0 50px;
 
+          ${mq[3]} {
+            flex-direction: column;
+            text-align: center;
+          }
+
           .category-main-text {
             margin: 0 40px;
 
             h3 {
               font-size: 1.8rem;
               color: #280d4a;
+              white-space: nowrap;
             }
 
             .all-link {
@@ -85,6 +92,7 @@ export const Categories: React.FC<CategoriesProps> = ({
           .searchbar {
             margin: 0 40px;
             position: relative;
+            left: 20px;
             border-top-right-radius: 10px;
             border-bottom-right-radius: 10px;
             /* box-shadow: 1px 3px 4px #525252; */
@@ -136,6 +144,14 @@ export const Categories: React.FC<CategoriesProps> = ({
           box-shadow: 1px 1px 2px #c168fa;
           padding: 10px 0;
           border-radius: 10px;
+
+          ${mq[3]} {
+            width: 170px;
+          }
+
+          ${mq[0]} {
+            width: 220px;
+          }
         }
 
         .categories-container .smol {
@@ -147,6 +163,10 @@ export const Categories: React.FC<CategoriesProps> = ({
           left: 0;
           top: 2rem;
           height: 220px;
+
+          ${mq[1]} {
+            display: none;
+          }
         }
       `}
     >
