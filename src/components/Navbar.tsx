@@ -65,11 +65,10 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
             height: 100px;
             margin-bottom: 25px;
             position: fixed;
-            right: 0;
             z-index: 3;
             width: 100vw;
             transition: linear 0.3s;
-            overflow-x: hidden;
+            overflow: hidden;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -79,48 +78,12 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
               height: 80px;
               padding-top: 0;
             }
-          }
 
-          .nav-scroll {
-            background: #d695ff;
-            height: 80px;
-            margin-bottom: 25px;
-            position: fixed;
-            z-index: 3;
-            width: 100vw;
-            transition: linear 0.3s;
-            overflow-x: hidden;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom-right-radius: 100px;
-            white-space: nowrap;
-
-            ${mq[2]} {
-              border-bottom-right-radius: 0;
+            .container {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
             }
-          }
-
-          .nav-mobile {
-            height: 70vh;
-            width: 100vw;
-            background: rgba(180, 61, 255, 0.5);
-            margin-bottom: 25px;
-            position: fixed;
-            right: 0;
-            z-index: 3;
-            transition: linear 0.3s;
-            overflow-x: hidden;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            white-space: nowrap;
-          }
-
-          .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
 
             .btn-nav {
               padding: 0 60px;
@@ -134,24 +97,6 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
 
               ${mq[2]} {
                 display: none;
-              }
-            }
-
-            .logo {
-              font-size: 1.2rem;
-              font-weight: 700;
-              color: #280d4a;
-              margin: 0;
-
-              ${mq[2]} {
-                position: absolute;
-                margin-left: 91px;
-                left: 0;
-                top: 2rem;
-              }
-
-              ${mq[1]} {
-                margin-left: 30px;
               }
             }
 
@@ -175,8 +120,134 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
             }
           }
 
+          .nav-scroll {
+            background: #d695ff;
+            height: 80px;
+            margin-bottom: 25px;
+            position: fixed;
+            z-index: 3;
+            width: 100vw;
+            transition: linear 0.3s;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom-right-radius: 100px;
+            white-space: nowrap;
+
+            ${mq[2]} {
+              border-bottom-right-radius: 0;
+            }
+
+            .container {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+
+            .btn-nav {
+              padding: 0 60px;
+              font-weight: 600;
+              font-size: 0.8rem;
+              color: #303030;
+
+              ${mq[3]} {
+                padding: 20px;
+              }
+
+              ${mq[2]} {
+                display: none;
+              }
+            }
+
+            .link-github {
+              font-size: 0.8rem;
+              font-weight: 700;
+              margin: 0;
+              background: #fff;
+              border-radius: 15px;
+              padding: 10px 30px;
+              box-shadow: 1px 1px 2px #fff;
+
+              ${mq[3]} {
+                font-size: 0.7rem;
+                padding: 10px 20px;
+              }
+
+              ${mq[2]} {
+                display: none;
+              }
+            }
+          }
+
+          .nav-mobile {
+            height: 70vh;
+            width: 100vw;
+            background: rgba(180, 61, 255, 0.5);
+            margin-bottom: 25px;
+            position: fixed;
+            z-index: 3;
+            transition: linear 0.3s;
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .btn-nav {
+              font-weight: 700;
+              font-size: 2rem;
+              color: #000;
+              display: block;
+              margin: auto;
+              margin: 25px 0;
+              background: #d695ff;
+              padding-left: 15px;
+              border-radius: 10px;
+              color: #280d4a;
+            }
+
+            .link-github {
+              font-size: 0.8rem;
+              font-weight: 700;
+              margin: 0;
+              background: #fff;
+              border-radius: 15px;
+              padding: 10px 30px;
+              box-shadow: 1px 1px 2px #fff;
+            }
+
+            .container {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              align-items: center;
+              border-radius: 50px;
+              padding: 30px 0;
+            }
+          }
+
+          .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #280d4a;
+            margin: 0;
+
+            ${mq[2]} {
+              position: absolute;
+              margin-left: 91px;
+              left: 0;
+              top: 2rem;
+            }
+
+            ${mq[1]} {
+              margin-left: 30px;
+            }
+          }
+
           .icon-menu {
-            background: #e4ccf5;
+            background: #d297f9;
             height: 35px;
             width: 35px;
             position: absolute;
