@@ -97,6 +97,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
             top: 10rem;
           }
 
+          ${mq[1]} {
+            top: 7rem;
+          }
+
           p,
           p a {
             font-weight: 600;
@@ -153,11 +157,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
 
           ${mq[2]} {
             left: 0;
-            top: 4.5rem;
+            top: 3rem;
           }
 
-          ${mq[2]} {
-            height: 465px;
+          ${mq[1]} {
+            top: 2rem;
+            height: 425px;
           }
         }
       `}
