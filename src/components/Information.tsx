@@ -2,6 +2,7 @@
 import { css, jsx } from "@emotion/react";
 import React from "react";
 import Saly38 from "../img/Saly-38.png";
+import mq from "../config/MqBreakpoints";
 
 interface InformationProps {}
 
@@ -12,21 +13,37 @@ export const Information: React.FC<InformationProps> = ({}) => {
         height: 100vh;
         width: 100vw;
         max-width: 1980px;
-        margin: auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
         overflow: hidden;
 
         h3 {
           font-size: 3rem;
-          position: absolute;
-          top: 50%;
-          left: 5rem;
+          position: relative;
+          left: 9rem;
+        }
+
+        img {
+          height: 720px;
+          position: relative;
+          top: 5rem;
+        }
+
+        ${mq[1]} {
+          h3 {
+            font-size: 2rem;
+            left: 10rem;
+          }
+
+          img {
+            height: 550px;
+          }
         }
       `}
     >
-      <div className="information-wrap">
-        <h3>nothing in here yet...</h3>
-        <img src={Saly38} alt="person render" />
-      </div>
+      <h3>nothing in here yet...</h3>
+      <img src={Saly38} alt="person render" />
     </div>
   );
 };
