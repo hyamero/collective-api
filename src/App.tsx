@@ -217,7 +217,7 @@ function App() {
 
           <Route exact path="/information" component={Information} />
         </Switch>
-        <Footer />
+        {!loading && <Footer />}
       </div>
       <Styles />
     </Router>
