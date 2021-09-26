@@ -38,10 +38,13 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
         <div className="btns-navbar">
           <Link
             className="btn-nav"
-            to="/information"
-            onClick={() => setMenuOpen(false)}
+            to="/api-results"
+            onClick={() => {
+              startLoading();
+              setMenuOpen(false);
+            }}
           >
-            Information
+            Public APIs
           </Link>
           <Link
             className="btn-nav"
@@ -52,13 +55,10 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
           </Link>
           <Link
             className="btn-nav"
-            to="/api-results"
-            onClick={() => {
-              startLoading();
-              setMenuOpen(false);
-            }}
+            to="/information"
+            onClick={() => setMenuOpen(false)}
           >
-            Public APIs
+            Information
           </Link>
         </div>
         <a
@@ -119,6 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
               border-radius: 15px;
               padding: 10px 30px;
               box-shadow: 1px 1px 2px #fff;
+              color: #d695ff;
 
               ${mq[3]} {
                 font-size: 0.7rem;
@@ -209,18 +210,19 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
             .btn-nav {
               font-weight: 700;
               font-size: 2rem;
-              color: #000;
-              display: block;
+              color: #59337e;
+              display: flex;
               margin: auto;
               margin: 25px 0;
               padding-left: 15px;
               border-radius: 10px;
               color: #280d4a;
               transition: 0.3s ease-out;
+              transform: scale(0.96);
 
               &:hover {
-                color: #59337e;
-                transform: scale(0.96);
+                color: #000;
+                transform: scale(1);
               }
             }
 

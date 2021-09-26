@@ -185,6 +185,15 @@ export const Styles: React.FC<StylesProps> = ({}) => {
               left: 0;
               top: 2rem;
               height: 250px;
+
+              ${mq[1]} {
+                height: 230px;
+              }
+
+              ${mq[0]} {
+                height: 190px;
+                top: 1.2rem;
+              }
             }
           }
 
@@ -199,6 +208,10 @@ export const Styles: React.FC<StylesProps> = ({}) => {
             position: relative;
             cursor: pointer;
             overflow: hidden;
+
+            ${mq[0]} {
+              width: 380px;
+            }
 
             &::after {
               content: "👆";
@@ -271,6 +284,7 @@ export const Styles: React.FC<StylesProps> = ({}) => {
               display: flex;
               justify-content: flex-start;
               padding-left: 5px;
+              white-space: nowrap;
 
               li {
                 font-size: 0.8rem;

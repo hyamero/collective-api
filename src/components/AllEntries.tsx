@@ -6,6 +6,7 @@ import { FiExternalLink } from "react-icons/fi";
 import { Link, useHistory } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { motion } from "framer-motion";
+import mq from "../config/MqBreakpoints";
 
 import doodle3 from "../img/doodle-7.png";
 // import "aos/dist/aos.css";
@@ -59,6 +60,21 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
           position: absolute;
           margin: auto;
           bottom: 1.4rem;
+
+          ${mq[2]} {
+            height: 30px;
+            font-size: 0.9rem;
+            padding: 5px 15px;
+          }
+
+          ${mq[1]} {
+            font-size: 0.8rem;
+          }
+
+          ${mq[0]} {
+            font-size: 0.7rem;
+            padding: 5px 10px;
+          }
         }
       `}
     >
