@@ -210,7 +210,7 @@ export const Styles: React.FC<StylesProps> = ({}) => {
             overflow: hidden;
 
             ${mq[0]} {
-              width: 380px;
+              width: 370px;
             }
 
             &::after {
