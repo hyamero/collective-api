@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/react";
 import React from "react";
+import mq from "../config/MqBreakpoints";
 
 interface LoaderProps {}
 
@@ -236,6 +237,25 @@ export const Loader: React.FC<LoaderProps> = ({}) => {
             100% {
               opacity: 1;
             }
+          }
+        }
+
+        span.letters-loading {
+          ${mq[2]} {
+            font-size: 4.8rem;
+          }
+          ${mq[1]} {
+            font-size: 4.2rem;
+          }
+          ${mq[0]} {
+            font-size: 3.4rem;
+          }
+        }
+
+        ${mq[2]} {
+          p.text-center {
+            position: relative;
+            bottom: 1rem;
           }
         }
       `}

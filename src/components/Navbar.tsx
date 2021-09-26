@@ -119,7 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
               border-radius: 15px;
               padding: 10px 30px;
               box-shadow: 1px 1px 2px #fff;
-              color: #d695ff;
+              color: #551a8b;
 
               ${mq[3]} {
                 font-size: 0.7rem;
