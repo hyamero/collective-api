@@ -9,7 +9,6 @@ import { FiSearch } from "react-icons/fi";
 import { motion } from "framer-motion";
 
 import doodle3 from "../img/doodle-7.png";
-// import "aos/dist/aos.css";
 
 interface CategoryResultProps {
   categoryData: any;
@@ -100,7 +99,6 @@ export const CategoryResult: React.FC<CategoryResultProps> = ({
                 target="_blank"
                 key={entry.Link}
                 className="category-data-container"
-                // data-aos="fade-up"
               >
                 <CategoryEntry entry={entry} />
               </a>

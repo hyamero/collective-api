@@ -95,14 +95,12 @@ export const Categories: React.FC<CategoriesProps> = ({
             left: 20px;
             border-top-right-radius: 10px;
             border-bottom-right-radius: 10px;
-            /* box-shadow: 1px 3px 4px #525252; */
 
             input {
               height: 2.2rem;
               width: 300px;
               border-top-right-radius: 10px;
               border-bottom-right-radius: 10px;
-              /* border-radius: 15px; */
               border: none;
               font-size: 0.9rem;
               padding: 0 10px;

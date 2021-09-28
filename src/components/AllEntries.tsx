@@ -9,7 +9,6 @@ import { motion } from "framer-motion";
 import mq from "../config/MqBreakpoints";
 
 import doodle3 from "../img/doodle-7.png";
-// import "aos/dist/aos.css";
 
 interface AllEntriesProps {
   allEntries: any;
@@ -123,7 +122,6 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
                   target="_blank"
                   key={entry.Link}
                   className="category-data-container"
-                  // data-aos="fade-up"
                 >
                   <CategoryEntry entry={entry} />
                 </a>

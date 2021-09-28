@@ -9,7 +9,6 @@
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@types/react-router-dom": "^5.1.8",
-    "aos": "^2.3.4",
     "axios": "^0.21.1",
     "css-maid": "^2.0.1",
     "framer-motion": "^4.1.17",

@@ -1,6 +1,6 @@
 /** @jsx jsx */
-import { css, jsx, Global } from "@emotion/react";
-import React, { useState, useEffect, useRef } from "react";
+import { css, jsx } from "@emotion/react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,8 +10,6 @@ import {
 import axios from "axios";
 import "css-maid";
 import { Styles } from "./config/Styles";
-// import Aos from "aos";
-// import "aos/dist/aos.css";
 import { RiArrowUpSFill } from "react-icons/ri";
 
 //components
@@ -33,7 +31,6 @@ function App() {
   useEffect(() => {
     getCategories();
     getAllEntries();
-    // Aos.init({});
   }, []);
 
   const startLoading = () => {

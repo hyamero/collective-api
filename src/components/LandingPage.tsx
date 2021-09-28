@@ -2,15 +2,13 @@
 import { css, jsx } from "@emotion/react";
 import React from "react";
 import { Link } from "react-router-dom";
-import { animate, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import renderPerson from "../img/Saly-19.png";
 import doodle from "../img/doodle-5.png";
 import doodle1 from "../img/doodle-7.png";
 import background from "../img/Background.png";
-
 import mq from "../config/MqBreakpoints";
-import { RiLineChartFill } from "react-icons/ri";
 
 interface LandingPageProps {
   loading: boolean;
