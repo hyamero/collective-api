@@ -130,6 +130,7 @@ function App() {
             background: rgba(180, 61, 255, 0.2);
             border-radius: 50%;
             transition: linear 0.3s;
+            opacity: 1;
             z-index: 3;
             cursor: pointer;
 
@@ -137,16 +138,27 @@ function App() {
               transform: scale(1.03);
             }
           }
+
+          .icon-up-hidden {
+            transition: linear 0.3s;
+            height: 35px;
+            width: 35px;
+            bottom: 8vh;
+            right: 2rem;
+            border-radius: 50%;
+            border: 3px #b642ff solid;
+            background: rgba(180, 61, 255, 0.2);
+            opacity: 0;
+            z-index: 3;
+          }
         `}
       >
         <Navbar scroll={scroll} startLoading={startLoading} />
 
-        {scroll && (
-          <RiArrowUpSFill
-            className="icon-up"
-            onClick={() => window.scrollTo(0, 0)}
-          />
-        )}
+        <RiArrowUpSFill
+          className={`${scroll ? "icon-up" : "icon-up-hidden"}`}
+          onClick={() => window.scrollTo(0, 0)}
+        />
         {loading && <Loader />}
         <Switch>
           <Route
