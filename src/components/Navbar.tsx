@@ -66,7 +66,7 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
           href="https://github.com/hyamero/collective-api"
           target="_blank"
         >
-          GitHub Repo
+          Star on GitHub ⭐
         </a>
       </div>
 
