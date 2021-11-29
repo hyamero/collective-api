@@ -87,7 +87,7 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
             className="doodle3"
           />
 
-          <div className="categories-header container">
+          <div className="categories-header">
             <div className="category-main-text">
               <h3>Public APIs</h3>
             </div>
