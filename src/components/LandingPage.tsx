@@ -78,8 +78,16 @@ export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
         .doodle1 {
           position: absolute;
           height: 250px;
-          left: 5rem;
+          left: 35rem;
           bottom: 2rem;
+
+          ${mq[4]} {
+            left: 30rem;
+          }
+
+          ${mq[3]} {
+            left: 20rem;
+          }
         }
 
         .hero-container {
