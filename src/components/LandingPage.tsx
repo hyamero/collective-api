@@ -51,8 +51,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
         top: 0;
         right: 0;
         overflow: hidden;
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
         z-index: 2;
         background: url(${background});
         background-size: cover;
@@ -74,29 +72,36 @@ export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
         .doodle {
           position: absolute;
           height: 250px;
-          grid-column: 1/2;
           top: 2rem;
         }
 
         .doodle1 {
           position: absolute;
           height: 250px;
-          grid-column: 3/4;
+          left: 5rem;
           bottom: 2rem;
         }
 
         .hero-container {
-          grid-column: 2/4;
+          height: 100vh;
           z-index: 2;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .hero-main-text {
+            margin: 0;
+
+            ${mq[2]} {
+              margin-top: 5rem;
+              position: relative;
+              top: 7rem;
+            }
+          }
 
           ${mq[2]} {
             text-align: center;
-            position: relative;
-            top: 10rem;
-          }
-
-          ${mq[1]} {
-            top: 7rem;
+            flex-direction: column;
           }
 
           p,
@@ -122,7 +127,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
               line-height: 3.2rem;
             }
 
-            ${mq[1]} {
+            ${mq[2]} {
               font-size: 2.6rem;
               line-height: 2.6rem;
             }
@@ -141,16 +146,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
         .renderPerson {
           height: 600px;
           position: relative;
-          top: 4.5rem;
-
-          ${mq[4]} {
-            left: 4rem;
-            top: 5.3rem;
-          }
+          top: 20%;
 
           ${mq[3]} {
             height: 550px;
-            left: 7rem;
+            right: 3rem;
           }
 
           ${mq[2]} {
@@ -160,7 +160,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
           }
 
           ${mq[1]} {
-            top: 2rem;
+            top: 5rem;
             height: 425px;
           }
         }
@@ -180,27 +180,29 @@ export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
         src={doodle1}
         alt="doodle1"
       />
-      <div className="hero-container">
-        <p>
-          ⚡ POWERED BY{" "}
-          <a
-            href="https://github.com/public-apis/public-apis"
-            target="_blank"
-            className="public-apis"
-          >
-            PUBLIC APIS
-          </a>{" "}
-        </p>
-        <h1>
-          Collective List of <br />
-          Free APIs for <br />
-          Everyone
-        </h1>
-        <Link className="btn-main" to="/category">
-          Get Started
-        </Link>
+      <div className="hero-container container">
+        <div className="hero-main-text">
+          <p>
+            ⚡ POWERED BY{" "}
+            <a
+              href="https://github.com/public-apis/public-apis"
+              target="_blank"
+              className="public-apis"
+            >
+              PUBLIC APIS
+            </a>{" "}
+          </p>
+          <h1>
+            Collective List of <br />
+            Free APIs for <br />
+            Everyone
+          </h1>
+          <Link className="btn-main" to="/category">
+            Get Started
+          </Link>
+        </div>
+        <img className="renderPerson" src={renderPerson} alt="renderPerson" />
       </div>
-      <img className="renderPerson" src={renderPerson} alt="renderPerson" />
     </header>
   );
 };
