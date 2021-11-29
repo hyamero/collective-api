@@ -76,7 +76,7 @@ export const SearchResult: React.FC<SearchResultProps> = ({
             alt="doodle3"
             className="doodle3"
           />
-          <div className="categories-header container">
+          <div className="categories-header">
             <div className="category-main-text">
               <h3>APIs related to {keyword}</h3>
             </div>
