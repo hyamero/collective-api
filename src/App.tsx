@@ -37,7 +37,6 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      console.log("timer stopped");
     }, 1700);
   };
 
@@ -46,7 +45,6 @@ function App() {
       const url = "https://api.publicapis.org/entries";
       const res = await axios.get(url);
       setAllEntries(res.data.entries);
-      console.log(res.data.entries);
     } catch (err) {
       console.error(err);
     }
@@ -56,8 +54,7 @@ function App() {
     const url = "https://api.publicapis.org/categories";
     try {
       const res = await axios.get(url);
-      setCategories(res.data);
-      console.log(res.data);
+      setCategories(res.data.categories);
     } catch (err) {
       console.error(err);
     }

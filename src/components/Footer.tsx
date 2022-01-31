@@ -38,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({}) => {
 
         ul {
           display: flex;
-          flex-direction: row-reverse;
+          flex-direction: row-yoyo;
 
           li {
             margin: 0 1rem;

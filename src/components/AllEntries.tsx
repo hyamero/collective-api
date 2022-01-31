@@ -19,7 +19,7 @@ interface AllEntriesProps {
   startLoading: () => void;
 }
 
-const bounce: any = {
+const bounce = {
   infinite: {
     y: ["3%", "-3%"],
     transition: {

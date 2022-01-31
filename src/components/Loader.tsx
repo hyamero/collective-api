@@ -131,39 +131,39 @@ export const Loader: React.FC<LoaderProps> = ({}) => {
                     animation: letters-loading 4s infinite;
                   }
 
-                  &:nth-child(2)::before {
+                  &:nth-of-type(2)::before {
                     animation-delay: 0.1s;
                   }
 
-                  &:nth-child(3)::before {
+                  &:nth-of-type(3)::before {
                     animation-delay: 0.2s;
                   }
 
-                  &:nth-child(4)::before {
+                  &:nth-of-type(4)::before {
                     animation-delay: 0.3s;
                   }
 
-                  &:nth-child(5)::before {
+                  &:nth-of-type(5)::before {
                     animation-delay: 0.4s;
                   }
 
-                  &:nth-child(6)::before {
+                  &:nth-of-type(6)::before {
                     animation-delay: 0.5s;
                   }
 
-                  &:nth-child(7)::before {
+                  &:nth-of-type(7)::before {
                     animation-delay: 0.6s;
                   }
 
-                  &:nth-child(8)::before {
+                  &:nth-of-type(8)::before {
                     animation-delay: 0.7s;
                   }
 
-                  &:nth-child(9)::before {
+                  &:nth-of-type(9)::before {
                     animation-delay: 0.8s;
                   }
 
-                  &:nth-child(10)::before {
+                  &:nth-of-type(10)::before {
                     animation-delay: 0.9s;
                   }
                 }

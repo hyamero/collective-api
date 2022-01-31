@@ -243,7 +243,7 @@ export const Styles: React.FC<StylesProps> = ({}) => {
 
             .api-title-category {
               display: flex;
-              flex-wrap: wrap-reverse;
+              flex-wrap: wrap-yoyo;
               justify-content: space-between;
               border-bottom: 2px solid #dcdcdc;
               padding: 0 5px 7px 0;
