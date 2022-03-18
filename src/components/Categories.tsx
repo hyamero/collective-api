@@ -9,6 +9,7 @@ import mq from "../config/MqBreakpoints";
 import { FiSearch } from "react-icons/fi";
 
 import doodle3 from "../img/doodle-7.png";
+import { Loader } from "./Loader";
 
 interface CategoriesProps {
   categories: any;
@@ -175,87 +176,91 @@ export const Categories: React.FC<CategoriesProps> = ({
         alt="doodle3"
         className="doodle3"
       />
-      <div
-        className="wrapper"
-        css={css`
-          width: 80%;
-          max-width: 1280px;
-          margin: auto;
-          overflow-x: hidden;
-        `}
-      >
-        <div className="categories-header">
-          <div className="category-main-text">
-            <h3>Select a Category</h3>
-            <Link to="/api-results" className="all-link">
-              List all categories instead
-            </Link>
-          </div>
-          <div className="searchbar">
-            <input
-              type="text"
-              maxLength={25}
-              placeholder="Search a Category"
-              onChange={(e) => setCategoryFilter(e.target.value)}
-            />
-            <div className="icon-search-container">
-              <FiSearch className="icon-search" />
-            </div>
-          </div>
-        </div>
+      {!categories ? (
+        <Loader />
+      ) : (
         <div
-          className="categories-container"
+          className="wrapper"
           css={css`
-            display: flex;
-            flex-flow: row wrap;
-            justify-content: center;
-            background: #fff;
-            border-radius: 50px;
-            padding: 50px;
+            width: 80%;
+            max-width: 1280px;
+            margin: auto;
+            overflow-x: hidden;
           `}
         >
-          {message}
-          {typeof categories !== "undefined" && categorySearch === false
-            ? categories.map((category: string | undefined) => (
-                <Link to={`/category/${category}`} key={category}>
-                  <p
-                    className={`${
-                      category!.split("").length >= 22 ? "smol" : null
-                    }`}
-                    onClick={() => {
-                      setCategoryName(category);
-                      startLoading();
-                    }}
-                  >
-                    {category}
-                  </p>
-                </Link>
-              ))
-            : null}
-
-          {typeof categories !== "undefined" && categorySearch === true
-            ? categories
-                .filter((category: any) =>
-                  category.toLowerCase().includes(categoryFilter?.toLowerCase())
-                )
-                .map((category: string | undefined) => (
+          <div className="categories-header">
+            <div className="category-main-text">
+              <h3>Select a Category</h3>
+              <Link to="/api-results" className="all-link">
+                List all categories instead
+              </Link>
+            </div>
+            <div className="searchbar">
+              <input
+                type="text"
+                maxLength={25}
+                placeholder="Search a Category"
+                onChange={(e) => setCategoryFilter(e.target.value)}
+              />
+              <div className="icon-search-container">
+                <FiSearch className="icon-search" />
+              </div>
+            </div>
+          </div>
+          <div
+            className="categories-container"
+            css={css`
+              display: flex;
+              flex-flow: row wrap;
+              justify-content: center;
+              background: #fff;
+              border-radius: 50px;
+              padding: 50px;
+            `}
+          >
+            {message}
+            {typeof categories !== "undefined" && categorySearch === false
+              ? categories.map((category: string | undefined) => (
                   <Link to={`/category/${category}`} key={category}>
                     <p
                       className={`${
-                        category!.split(" ").length >= 22 ? "smol" : null
+                        category!.split("").length >= 22 ? "smol" : null
                       }`}
                       onClick={() => {
                         setCategoryName(category);
-                        startLoading();
                       }}
                     >
                       {category}
                     </p>
                   </Link>
                 ))
-            : null}
+              : null}
+
+            {typeof categories !== "undefined" && categorySearch === true
+              ? categories
+                  .filter((category: any) =>
+                    category
+                      .toLowerCase()
+                      .includes(categoryFilter?.toLowerCase())
+                  )
+                  .map((category: string | undefined) => (
+                    <Link to={`/category/${category}`} key={category}>
+                      <p
+                        className={`${
+                          category!.split(" ").length >= 22 ? "smol" : null
+                        }`}
+                        onClick={() => {
+                          setCategoryName(category);
+                        }}
+                      >
+                        {category}
+                      </p>
+                    </Link>
+                  ))
+              : null}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

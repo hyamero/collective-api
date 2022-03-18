@@ -35,9 +35,6 @@ function App() {
 
   const startLoading = () => {
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1700);
   };
 
   const getAllEntries = async () => {
@@ -45,6 +42,8 @@ function App() {
       const url = "https://api.publicapis.org/entries";
       const res = await axios.get(url);
       setAllEntries(res.data.entries);
+      console.log(allEntries);
+      setLoading(false);
     } catch (err) {
       console.error(err);
     }
@@ -55,6 +54,7 @@ function App() {
     try {
       const res = await axios.get(url);
       setCategories(res.data.categories);
+      setLoading(false);
     } catch (err) {
       console.error(err);
     }
@@ -68,15 +68,12 @@ function App() {
     getCategoryData();
   }, [categoryName]);
 
-  useEffect(() => {
-    getCategoryData();
-  }, []);
-
   const getCategoryData = async () => {
     const url = "https://api.publicapis.org/entries?category=";
     try {
       const res = await axios.get(`${url}${categoryName}`);
       setCategoryData(res.data.entries);
+      setLoading(false);
     } catch (err) {
       console.error(err);
     }
@@ -91,7 +88,7 @@ function App() {
     try {
       const res = await axios.get(`${url}${keyword}`);
       setSearchResult(res.data.entries);
-      console.log(res.data);
+      setLoading(false);
     } catch (err) {
       console.error(err);
     }
@@ -150,7 +147,13 @@ function App() {
           }
         `}
       >
-        <Navbar scroll={scroll} startLoading={startLoading} />
+        <Navbar
+          scroll={scroll}
+          startLoading={startLoading}
+          setLoading={setLoading}
+          allEntries={allEntries}
+          getAllEntries={getAllEntries}
+        />
 
         <RiArrowUpSFill
           className={`${scroll ? "icon-up" : "icon-up-hidden"}`}
@@ -161,7 +164,9 @@ function App() {
           <Route
             path="/"
             exact
-            render={() => <LandingPage loading={loading} />}
+            render={() => (
+              <LandingPage loading={loading} getAllEntries={getAllEntries} />
+            )}
           />
 
           <Route

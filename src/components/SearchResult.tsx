@@ -87,7 +87,6 @@ export const SearchResult: React.FC<SearchResultProps> = ({
                     e.preventDefault();
                     history.push(`/search/${keyword}`);
                     getSearchResult();
-                    startLoading();
                   }}
                 >
                   <input
@@ -103,11 +102,7 @@ export const SearchResult: React.FC<SearchResultProps> = ({
               </div>
             </div>
             <div className="all-link">
-              <Link
-                to="/api-results"
-                onClick={() => startLoading()}
-                className="link-public"
-              >
+              <Link to="/api-results" className="link-public">
                 List all Public APIs
               </Link>
               <Link to="/category" className="link-category">

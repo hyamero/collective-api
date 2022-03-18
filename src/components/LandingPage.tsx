@@ -12,6 +12,7 @@ import mq from "../config/MqBreakpoints";
 
 interface LandingPageProps {
   loading: boolean;
+  getAllEntries: () => void;
 }
 
 const bounce: any = {
@@ -40,7 +41,10 @@ const bounceOpp: any = {
   },
 };
 
-export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
+export const LandingPage: React.FC<LandingPageProps> = ({
+  loading,
+  getAllEntries,
+}) => {
   return (
     <header
       className="LandingPage"
@@ -205,7 +209,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({ loading }) => {
             Free APIs for <br />
             Everyone
           </h1>
-          <Link className="btn-main" to="/category">
+          <Link
+            className="btn-main"
+            to="/category"
+            onClick={() => getAllEntries()}
+          >
             Get Started
           </Link>
         </div>

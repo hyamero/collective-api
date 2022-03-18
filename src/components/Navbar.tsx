@@ -9,9 +9,18 @@ import { HiMenuAlt3 } from "react-icons/hi";
 interface NavbarProps {
   scroll: boolean;
   startLoading: () => void;
+  allEntries: any;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  getAllEntries: () => Promise<void>;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  scroll,
+  startLoading,
+  allEntries,
+  setLoading,
+  getAllEntries,
+}) => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
   return (
@@ -40,8 +49,12 @@ export const Navbar: React.FC<NavbarProps> = ({ scroll, startLoading }) => {
             className="btn-nav"
             to="/api-results"
             onClick={() => {
-              startLoading();
               setMenuOpen(false);
+              if (allEntries) {
+                setLoading(false);
+              } else {
+                getAllEntries();
+              }
             }}
           >
             Public APIs

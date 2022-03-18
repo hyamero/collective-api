@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import mq from "../config/MqBreakpoints";
 
 import doodle3 from "../img/doodle-7.png";
+import { Loader } from "./Loader";
 
 interface AllEntriesProps {
   allEntries: any;
@@ -97,7 +98,6 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
                   e.preventDefault();
                   history.push(`/search/${keyword}`);
                   getSearchResult();
-                  startLoading();
                 }}
               >
                 <input
@@ -115,25 +115,31 @@ export const AllEntries: React.FC<AllEntriesProps> = ({
               Select a Category
             </Link>
           </div>
-          {typeof allEntries !== "undefined"
-            ? allEntries.slice(0, showNumber).map((entry: any) => (
-                <a
-                  href={entry.Link}
-                  target="_blank"
-                  key={entry.Link}
-                  className="category-data-container"
-                >
-                  <CategoryEntry entry={entry} />
-                </a>
-              ))
-            : null}
-          <button
-            onClick={() => {
-              setShowNumber(showNumber + 33);
-            }}
-          >
-            Show More
-          </button>
+          {!allEntries ? (
+            <Loader />
+          ) : (
+            <>
+              {typeof allEntries !== "undefined"
+                ? allEntries.slice(0, showNumber).map((entry: any) => (
+                    <a
+                      href={entry.Link}
+                      target="_blank"
+                      key={entry.Link}
+                      className="category-data-container"
+                    >
+                      <CategoryEntry entry={entry} />
+                    </a>
+                  ))
+                : null}
+              <button
+                onClick={() => {
+                  setShowNumber(showNumber + 33);
+                }}
+              >
+                Show More
+              </button>
+            </>
+          )}
         </>
       )}
     </div>
