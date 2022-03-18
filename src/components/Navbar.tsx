@@ -82,18 +82,47 @@ export const Navbar: React.FC<NavbarProps> = ({
           Star on GitHub ⭐
         </a>
       </div>
-
+      <a
+        className="issue"
+        href="https://web.archive.org/web/20220318035229/https://github.com/public-apis/public-apis/issues/3104"
+        target="_blank"
+      >
+        ⚠️Public APIs Situation [ READ THIS ISSUE PLEASE ]⚠️
+      </a>
       <Global
         styles={css`
+          .issue {
+            background: white;
+            padding: 10px 1rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 0;
+            background: #fff;
+            border-radius: 15px;
+            padding: 10px 30px;
+            box-shadow: 1px 1px 2px #fff;
+            color: #551a8b;
+
+            ${mq[3]} {
+              font-size: 0.7rem;
+              padding: 10px 20px;
+            }
+
+            ${mq[2]} {
+              display: none;
+            }
+          }
+
           .Navbar {
             height: 100px;
+            margin-top: 10px;
             margin-bottom: 25px;
             position: fixed;
             z-index: 3;
             width: 100vw;
             transition: linear 0.3s;
-            overflow: hidden;
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
             align-items: center;
             white-space: nowrap;
